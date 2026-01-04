@@ -4,7 +4,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Script from "next/script"
 import {
   Clock,
@@ -59,6 +59,7 @@ export default function BookConsultationPage() {
   const [selectedDate, setSelectedDate] = useState<number | null>(null)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [availableSlots, setAvailableSlots] = useState<{[key: string]: string[]}>({})
 
   // 1. ADDED: State to hold form values
   const [formData, setFormData] = useState({
@@ -96,21 +97,73 @@ export default function BookConsultationPage() {
     },
   ]
 
-  // Mock Dates logic
-  const today = new Date()
-  const dates = Array.from({ length: 14 }, (_, i) => {
-    const d = new Date()
-    d.setDate(today.getDate() + i + 1)
-    return {
-      day: d.toLocaleDateString("en-US", { weekday: "short" }),
-      date: d.getDate(),
-      month: d.toLocaleDateString("en-US", { month: "short" }),
-      fullDate: d,
-      available: ![0, 6].includes(d.getDay())
-    }
-  })
+  // Mock Dates logic - memoized to prevent re-renders
+  const dates = useMemo(() => {
+    const today = new Date()
+    return Array.from({ length: 14 }, (_, i) => {
+      const d = new Date()
+      d.setDate(today.getDate() + i + 1)
+      return {
+        day: d.toLocaleDateString("en-US", { weekday: "short" }),
+        date: d.getDate(),
+        month: d.toLocaleDateString("en-US", { month: "short" }),
+        fullDate: d,
+        available: ![0, 6].includes(d.getDay())
+      }
+    })
+  }, [])
 
   const timeSlots = ["09:00 AM", "10:30 AM", "11:00 AM", "01:00 PM", "02:30 PM", "04:00 PM"]
+
+  // Initialize and manage dynamic slot availability
+  useEffect(() => {
+    const initializeSlots = () => {
+      const slots: {[key: string]: string[]} = {}
+      dates.forEach(date => {
+        if (date.available) {
+          const dateKey = date.fullDate.toDateString()
+          // Randomly remove 1-3 slots from each day
+          const availableCount = Math.max(1, timeSlots.length - Math.floor(Math.random() * 3) - 1)
+          slots[dateKey] = timeSlots.slice(0, availableCount)
+        }
+      })
+      setAvailableSlots(slots)
+    }
+
+    initializeSlots()
+
+    // Randomly reduce slots every 30-60 seconds
+    const reduceSlots = setInterval(() => {
+      setAvailableSlots(prev => {
+        const updated = { ...prev }
+        const dateKeys = Object.keys(updated)
+        const randomDate = dateKeys[Math.floor(Math.random() * dateKeys.length)]
+        
+        if (updated[randomDate] && updated[randomDate].length > 1) {
+          updated[randomDate] = updated[randomDate].slice(0, -1)
+        }
+        return updated
+      })
+    }, Math.random() * 30000 + 30000) // 30-60 seconds
+
+    // Auto-increase slots when zero
+    const increaseSlots = setInterval(() => {
+      setAvailableSlots(prev => {
+        const updated = { ...prev }
+        Object.keys(updated).forEach(dateKey => {
+          if (updated[dateKey].length === 0) {
+            updated[dateKey] = timeSlots.slice(0, Math.floor(Math.random() * 3) + 2) // 2-4 slots
+          }
+        })
+        return updated
+      })
+    }, 10000) // Check every 10 seconds
+
+    return () => {
+      clearInterval(reduceSlots)
+      clearInterval(increaseSlots)
+    }
+  }, [dates])
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -160,9 +213,27 @@ export default function BookConsultationPage() {
     }
 
     try {
+      // Use the same working EmailJS service from contact form
+      const serviceId = "service_vaypdyf";
+      const templateId = "template_6nmdk5d"; 
+      const publicKey = "ktFHFC2F9khjQQDVg";
+
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        to_email: "support@mprimotech.com",
+        service_type: selectedServiceTitle,
+        requested_date: fullDateString,
+        requested_time: selectedTime || "ASAP",
+        message: formData.description,
+        to_name: "MPrimo Support Team",
+        subject: selectedType === "emergency" 
+          ? `🚨 URGENT: Emergency IT Support Request from ${formData.firstName} ${formData.lastName}`
+          : `New Consultation Request: ${selectedServiceTitle}`
+      };
+
       // @ts-ignore
-      await emailjs.send('service_xfsu11w', 'YOUR_TEMPLATE_ID', params)
-      // Replace with: await emailjs.send('service_abc123', 'template_xyz789', params)
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
       setIsSubmitting(false)
       setStep(4)
     } catch (error) {
@@ -174,12 +245,11 @@ export default function BookConsultationPage() {
 
   return (
     <>
-      <Script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" />
+      <Script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" />
       <Script id="emailjs-init">
         {`
           (function(){
-            emailjs.init("YOUR_PUBLIC_KEY");
-            // Replace with: emailjs.init("user_abcdef123456");
+            emailjs.init("ktFHFC2F9khjQQDVg");
           })();
         `}
       </Script>
@@ -345,9 +415,11 @@ export default function BookConsultationPage() {
 
                         {selectedDate && (
                              <div className="mb-8 animate-in fade-in zoom-in duration-300">
-                                <label className="text-xs font-bold uppercase text-muted-foreground mb-3 block">Available Slots</label>
+                                <label className="text-xs font-bold uppercase text-muted-foreground mb-3 block">
+                                  Available Slots ({availableSlots[dates.find(d => d.date === selectedDate)?.fullDate.toDateString() || '']?.length || 0} remaining)
+                                </label>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                                    {timeSlots.map((time) => (
+                                    {(availableSlots[dates.find(d => d.date === selectedDate)?.fullDate.toDateString() || ''] || []).map((time) => (
                                         <button
                                             key={time}
                                             onClick={() => setSelectedTime(time)}
@@ -361,6 +433,11 @@ export default function BookConsultationPage() {
                                         </button>
                                     ))}
                                 </div>
+                                {(availableSlots[dates.find(d => d.date === selectedDate)?.fullDate.toDateString() || '']?.length || 0) === 0 && (
+                                  <p className="text-center text-sm text-orange-600 mt-4 animate-pulse">
+                                    ⏳ All slots taken. New slots opening soon...
+                                  </p>
+                                )}
                             </div>
                         )}
 
@@ -408,7 +485,7 @@ export default function BookConsultationPage() {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold">Work Email</label>
+                                <label className="text-sm font-semibold">Email</label>
                                 <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" />
                             </div>
                             
@@ -446,10 +523,10 @@ export default function BookConsultationPage() {
                         <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
                             <CheckCircle className="h-10 w-10" />
                         </div>
-                        <h2 className="text-2xl sm:text-3xl font-bold mb-4">Request Generated</h2>
+                        <h2 className="text-2xl sm:text-3xl font-bold mb-4">Booking Confirmed</h2>
                         
                         <p className="text-slate-600 mb-8 max-w-sm">
-                            Your consultation request has been sent successfully. We will get back to you shortly.
+                          Thank you for your booking. We have sent you a ticket confirming your appointment. We look forward to speaking with you soon!
                         </p>
 
                         <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">

@@ -35,7 +35,7 @@ export default function ContactPage() {
       // Replace these with your EmailJS credentials
       const templateId = "template_hjm0zud";
 
-      const serviceId = "service_8tm6ghc";
+      const serviceId = "service_u8ksijg";
       const publicKey = "ktFHFC2F9khjQQDVg";
 
       const templateParams = {
@@ -221,7 +221,7 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-3 py-2 sm:px-4 border border-border rounded-lg focus:outline-none focus:border-primary bg-white text-sm sm:text-base"
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+44 123 4567-890"
                   />
                 </div>
               </div>
