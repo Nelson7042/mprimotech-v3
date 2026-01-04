@@ -37,7 +37,7 @@ export default function Header() {
             <img
               src="/assets/mprimo 2.png"
               alt="MPrimo Tech logo"
-              className="h-auto w-auto object-contain p-2 h-[120px] md:h-[180px]"
+              className="w-auto object-contain h-[60px] md:h-[150px]"
             />
           </Link>
 
