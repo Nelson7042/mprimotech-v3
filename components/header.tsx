@@ -29,14 +29,19 @@ export default function Header() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded bg-primary">
+          <Link href="/" className="">
+            {/*<div className="flex h-8 w-8 items-center justify-center rounded bg-primary">
               <span className="font-bold text-white">M</span>
             </div>
-            <span className="text-lg font-bold text-foreground">MPrimo Tech</span>
+            <span className="text-lg font-bold text-foreground">MPrimo Tech</span>*/}
+            <img
+              src="/assets/mprimo 2.png"
+              alt="MPrimo Tech logo"
+              className="h-auto w-auto object-contain p-2 sm:h-[180px] "
+            />
           </Link>
 
-          {/* Desktop Menu */}
+          {/* Desktop Menu */}  
           <div className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-sm font-medium text-foreground hover:text-primary transition">
               Home

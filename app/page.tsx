@@ -217,7 +217,7 @@ export default function Home() {
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 text-base sm:text-lg px-8 py-6"
                 >
-                  <Link href="/contact">Book Consultation</Link>
+                  <Link href="/contact">Send Enquiry</Link>
                 </Button>
               </div>
             </div>

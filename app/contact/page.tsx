@@ -33,10 +33,10 @@ export default function ContactPage() {
 
     try {
       // Replace these with your EmailJS credentials
-      const templateId = "template_7po7vxc";
+      const templateId = "template_hjm0zud";
 
       const serviceId = "service_8tm6ghc";
-      const publicKey = "58j2WqXoQ8R8vqvQb";
+      const publicKey = "ktFHFC2F9khjQQDVg";
 
       const templateParams = {
         from_name: formData.name,
