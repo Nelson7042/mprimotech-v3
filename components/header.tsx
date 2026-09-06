@@ -10,18 +10,18 @@ export default function Header() {
   const [servicesOpen, setServicesOpen] = useState(false)
 
   const services = [
-    { name: "Managed IT Services", href: "/services/managed-it" },
-    { name: "Risk Analysis", href: "/services/risk-analysis" },
-    { name: "Cloud & Infrastructure", href: "/services/cloud" },
-    { name: "Digital Workplace", href: "/services/digital-workplace" },
-    { name: "Network & Connectivity", href: "/services/network" },
-    { name: "Backup & Business Continuity", href: "/services/backup" },
+    { name: "On-Site IT Support", href: "/services/managed-it" },
+    { name: "Admin Automation", href: "/services/risk-analysis" },
+    { name: "System Untangling", href: "/services/cloud" },
+    { name: "Team Productivity", href: "/services/digital-workplace" },
+    { name: "Network & WiFi", href: "/services/network" },
+    { name: "Backup & Safety", href: "/services/backup" },
     { name: "Remote & Desktop Support", href: "/sectors/remote-&-desktop-support" },
     { name: "Rollouts & Refresh", href: "/sectors/rollouts-&-refresh" },
     { name: "Hands & Eyes Services", href: "/sectors/hands-&-eyes-services" },
-    { name: "Consultancy", href: "/services/consultancy" },
-    { name: "Professional Services", href: "/services/professional" },
-    { name: "B2B IT Contracts", href: "/services/b2b-contracts" },
+    { name: "IT Strategy", href: "/services/consultancy" },
+    { name: "Project Support", href: "/services/professional" },
+    { name: "Ongoing Support", href: "/services/b2b-contracts" },
   ]
 
   return (
@@ -30,10 +30,6 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="">
-            {/*<div className="flex h-8 w-8 items-center justify-center rounded bg-primary">
-              <span className="font-bold text-white">M</span>
-            </div>
-            <span className="text-lg font-bold text-foreground">MPrimo Tech</span>*/}
             <img
               src="/assets/mprimo 2.png"
               alt="MPrimo Tech logo"
@@ -50,7 +46,7 @@ export default function Header() {
             {/* Services Dropdown */}
             <div className="relative group">
               <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition">
-                Services
+                What We Do
                 <ChevronDown className="h-4 w-4" />
               </button>
               <div className="absolute left-0 mt-0 hidden w-48 bg-white border border-border rounded-lg shadow-lg group-hover:block py-2">
@@ -69,9 +65,6 @@ export default function Header() {
             <Link href="/sectors" className="text-sm font-medium text-foreground hover:text-primary transition">
               Sectors
             </Link>
-            {/* <Link href="/resources" className="text-sm font-medium text-foreground hover:text-primary transition">
-              Resources
-            </Link> */}
             <Link href="/about" className="text-sm font-medium text-foreground hover:text-primary transition">
               About
             </Link>
@@ -83,7 +76,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden md:flex">
             <Button asChild className="bg-primary hover:bg-primary/90 text-white">
-              <Link href="/book-consultation">Book Consultation</Link>
+              <Link href="/contact">Book a Site Visit</Link>
             </Button>
           </div>
 
@@ -103,7 +96,7 @@ export default function Header() {
               onClick={() => setServicesOpen(!servicesOpen)}
               className="w-full text-left px-2 py-2 text-sm font-medium text-foreground hover:text-primary flex items-center gap-1"
             >
-              Services
+              What We Do
               <ChevronDown className={`h-4 w-4 transition ${servicesOpen ? "rotate-180" : ""}`} />
             </button>
             {servicesOpen && (
@@ -123,9 +116,6 @@ export default function Header() {
             <Link href="/sectors" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
               Sectors
             </Link>
-            {/* <Link href="/resources" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
-              Resources
-            </Link> */}
             <Link href="/about" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
               About
             </Link>
@@ -133,7 +123,7 @@ export default function Header() {
               Contact
             </Link>
             <Button asChild className="mt-4 w-full bg-primary hover:bg-primary/90 text-white">
-              <Link href="/book-consultation">Book Consultation</Link>
+              <Link href="/contact">Book a Site Visit</Link>
             </Button>
           </div>
         )}
