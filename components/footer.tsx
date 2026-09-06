@@ -9,46 +9,46 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h3 className="text-lg font-bold mb-4">MPrimo Tech</h3>
-            <p className="text-sm opacity-90">Enterprise IT services and solutions for modern businesses.</p>
+            <p className="text-sm opacity-90">UK-based on-site IT support for care homes and hospitality. We untangle messy admin and automate manual work.</p>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold mb-4">Services</h3>
+            <h3 className="font-semibold mb-4">What We Do</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/services/managed-it" className="opacity-90 hover:opacity-100">
-                  Managed IT Services
+                  On-Site IT Support
                 </Link>
               </li>
               <li>
                 <Link href="/services/risk-analysis" className="opacity-90 hover:opacity-100">
-                  Risk Analysis
+                  Admin Automation
                 </Link>
               </li>
               <li>
                 <Link href="/services/cloud" className="opacity-90 hover:opacity-100">
-                  Cloud & Infrastructure
+                  System Untangling
                 </Link>
               </li>
               <li>
                 <Link href="/services/digital-workplace" className="opacity-90 hover:opacity-100">
-                  Digital Workplace
+                  Team Productivity
                 </Link>
               </li>
               <li>
                 <Link href="/services/network" className="opacity-90 hover:opacity-100">
-                  Network & Connectivity
+                  Network & WiFi
                 </Link>
               </li>
               <li>
                 <Link href="/services/backup" className="opacity-90 hover:opacity-100">
-                  Backup & Continuity
+                  Backup & Safety
                 </Link>
               </li>
               <li>
                 <Link href="/services/b2b-contracts" className="opacity-90 hover:opacity-100">
-                  B2B IT Contracts
+                  Ongoing Support
                 </Link>
               </li>
             </ul>
@@ -56,16 +56,16 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
+            <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
-              {/* <li>
-                <Link href="/resources" className="opacity-90 hover:opacity-100">
-                  Blog
-                </Link>
-              </li> */}
               <li>
-                <Link href="/case-studies" className="opacity-90 hover:opacity-100">
-                  Case Studies
+                <Link href="/about" className="opacity-90 hover:opacity-100">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="opacity-90 hover:opacity-100">
+                  Contact
                 </Link>
               </li>
               <li>
@@ -73,17 +73,12 @@ export default function Footer() {
                   FAQ
                 </Link>
               </li>
-              <li>
-                <Link href="/about" className="opacity-90 hover:opacity-100">
-                  About Us
-                </Link>
-              </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold mb-4">Contact</h3>
+            <h3 className="font-semibold mb-4">Get in Touch</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
@@ -97,10 +92,10 @@ export default function Footer() {
                  +44 (330) 223-7450
                 </a>
               </li>
-              {/* <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span className="opacity-90">123 Tech Street, Silicon Valley, CA 94025</span>
-              </li> */}
+                <span className="opacity-90">United Kingdom</span>
+              </li>
             </ul>
           </div>
         </div>
