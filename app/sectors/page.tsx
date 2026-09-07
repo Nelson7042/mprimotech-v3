@@ -1,109 +1,61 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+"use client";
+
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Link from "next/link";
+import { CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function SectorsPage() {
   const sectors = [
     {
-      name: "Financial Services",
-      slug: "financial-services",
-      description:
-        "Specialized IT solutions for banks, insurance, and fintech companies with regulatory compliance and security focus.",
-      icon: "",
-      challenges: ["Regulatory Compliance", "Data Security", "High Availability"],
+      name: "Care Homes",
+      description: "We help care homes automate admin, fix unreliable tech, and give staff more time with residents.",
+      href: "/sectors/care-homes"
     },
     {
-      name: "Healthcare",
-      slug: "healthcare",
-      description:
-        "HIPAA-compliant IT infrastructure for hospitals, clinics, and healthcare providers ensuring data privacy.",
-      icon: "",
-      challenges: ["Patient Data Protection", "System Uptime", "HIPAA Compliance"],
-    },
-    {
-      name: "Manufacturing",
-      slug: "manufacturing",
-      description:
-        "Production support and industrial IT solutions for manufacturing facilities and supply chain optimization.",
-      icon: "",
-      challenges: ["Production Uptime", "Supply Chain Integration", "IoT Systems"],
-    },
-    {
-      name: "Retail",
-      slug: "retail",
-      description: "Point-of-sale systems, customer analytics, and omnichannel IT solutions for retail businesses.",
-      icon: "",
-      challenges: ["POS Reliability", "Customer Data", "Inventory Management"],
-    },
-    {
-      name: "Education",
-      slug: "education",
-      description: "Learning management systems, student data protection, and campus-wide IT infrastructure.",
-      icon: "",
-      challenges: ["Learning Continuity", "Data Protection", "System Scalability"],
-    },
-    {
-      name: "Government",
-      slug: "government",
-      description: "Government-grade security and compliance for public sector organizations and agencies.",
-      icon: "",
-      challenges: ["Security Standards", "Compliance Requirements", "Data Sovereignty"],
-    },
-  ]
+      name: "Hospitality",
+      description: "From hotels to restaurants – we untangle messy systems and keep your tech working reliably.",
+      href: "/sectors/hospitality"
+    }
+  ];
 
   return (
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary to-primary/80 text-white">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl sm:text-6xl font-bold mb-6">Industries We Serve</h1>
-            <p className="text-xl opacity-90 max-w-3xl">
-              Specialized IT solutions tailored to the unique requirements and challenges of your industry.
-            </p>
+        <section className="py-16 bg-gradient-to-br from-primary to-primary/80 text-white">
+          <div className="mx-auto max-w-4xl px-4 text-center">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4">Sectors We Work With</h1>
+            <p className="text-lg opacity-90">We specialise in care homes and hospitality.</p>
           </div>
         </section>
 
-        {/* Sectors Grid */}
-        <section className="py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="py-16 bg-background">
+          <div className="mx-auto max-w-4xl px-4">
+            <div className="grid md:grid-cols-2 gap-8">
               {sectors.map((sector) => (
-                <Link key={sector.slug} href={`/sectors/${sector.slug}`}>
-                  <div className="group h-full flex flex-col p-8 rounded-lg border border-border bg-white hover:shadow-lg hover:border-primary transition-all duration-300">
-                    <div className="text-5xl mb-4">{sector.icon}</div>
-                    <h2 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition">
-                      {sector.name}
-                    </h2>
-                    <p className="text-muted-foreground mb-6 flex-grow">{sector.description}</p>
-                    <div className="flex items-center gap-2 text-primary font-medium">
-                      Explore Solutions
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                </Link>
+                <div key={sector.name} className="bg-white border rounded-xl p-8 shadow-sm hover:shadow-lg transition">
+                  <h2 className="text-2xl font-bold mb-3">{sector.name}</h2>
+                  <p className="text-muted-foreground mb-6">{sector.description}</p>
+                  <Button asChild className="bg-primary hover:bg-primary/90 text-white">
+                    <Link href="/contact">Get in touch</Link>
+                  </Button>
+                </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-primary text-white">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Don't see your industry?</h2>
-            <p className="text-lg opacity-90 mb-8">
-              We work with organizations across all sectors. Let's discuss your specific IT needs.
-            </p>
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/contact">Contact Our Team</Link>
-            </Button>
+            <div className="mt-12 bg-blue-50 border border-blue-200 rounded-xl p-8 text-center">
+              <h3 className="text-xl font-bold mb-3">Not in care or hospitality?</h3>
+              <p className="text-muted-foreground mb-4">We still help with IT challenges – get in touch and we'll see if we can help.</p>
+              <Button asChild variant="outline">
+                <Link href="/contact">Contact us</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>
       <Footer />
     </>
-  )
+  );
 }
