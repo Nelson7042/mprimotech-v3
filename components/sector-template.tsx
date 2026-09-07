@@ -21,13 +21,6 @@ interface SectorTemplateProps {
     icon: React.ReactNode
     href: string
   }>
-  caseStudyTitle: string
-  caseStudyDescription: string
-  testimonial: {
-    text: string
-    name: string
-    company: string
-  }
 }
 
 export default function SectorTemplate({
@@ -37,9 +30,6 @@ export default function SectorTemplate({
   challenges,
   solutions,
   relatedServices,
-  caseStudyTitle,
-  caseStudyDescription,
-  testimonial,
 }: SectorTemplateProps) {
   return (
     <>
@@ -57,7 +47,7 @@ export default function SectorTemplate({
             </div>
             <div className="flex items-center gap-4 mb-4">
               {/* <span className="text-5xl">{icon}</span> */}
-              <h1 className="text-2xl md::text-5xl font-bold">{sectorName}</h1>
+              <h1 className="text-2xl md:text-5xl font-bold">{sectorName}</h1>
             </div>
             <p className="text-lg md:text-xl opacity-90 max-w-2xl">{overview}</p>
           </div>
@@ -68,10 +58,7 @@ export default function SectorTemplate({
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-lg md:text-3xl font-bold text-foreground mb-6">Industry Context</h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Organizations in the {sectorName.toLowerCase()} industry face unique IT challenges. Regulatory
-              requirements, operational demands, and competitive pressures create complex IT environments. MPrimo Tech
-              brings specialized expertise to deliver solutions that address these specific needs while supporting
-              business growth.
+              Organizations in {sectorName.toLowerCase()} face unique operational and administrative challenges. Disconnected systems, manual forms, and repetitive processes create daily friction. MPrimo Tech brings practical on-site expertise to map out messy workflows and automate admin bottlenecks.
             </p>
           </div>
         </section>
@@ -79,7 +66,7 @@ export default function SectorTemplate({
         {/* Key Challenges */}
         <section className="py-16 bg-background">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-lg md:text-3xl font-bold text-foreground mb-8">Industry Challenges</h2>
+            <h2 className="text-lg md:text-3xl font-bold text-foreground mb-8">Common Challenges</h2>
             <div className="space-y-4">
               {challenges.map((challenge, index) => (
                 <div
@@ -99,7 +86,7 @@ export default function SectorTemplate({
         {/* Solutions */}
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-xl md:text-3xl font-bold text-foreground mb-8">Our Solutions</h2>
+            <h2 className="text-xl md:text-3xl font-bold text-foreground mb-8">Our Approach</h2>
             <div className="space-y-4">
               {solutions.map((solution, index) => (
                 <div key={index} className="flex gap-4 p-4 rounded-lg bg-secondary/50 hover:bg-secondary transition">
@@ -126,42 +113,15 @@ export default function SectorTemplate({
           </div>
         </section>
 
-        {/* Case Study */}
-        <section className="py-16 bg-white">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-lg md:text-3xl font-bold text-foreground mb-6">Case Study</h2>
-            <div className="p-4 md:p-7 rounded-lg border border-border bg-secondary/30">
-              <h3 className="text-lg md:text-2xl font-bold text-foreground mb-4">{caseStudyTitle}</h3>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">{caseStudyDescription}</p>
-              <Button asChild className="bg-primary hover:bg-primary/90 text-white">
-                <Link href="/case-studies">View All Case Studies</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonial */}
-        {/* <section className="py-16 bg-primary text-white">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg border border-white/20">
-              <p className="text-base md:text-xl mb-6 italic">"{testimonial.text}"</p>
-              <div>
-                <p className="font-semibold text-base md:text-lg">{testimonial.name}</p>
-                <p className="text-sm md:text-base opacity-90">{testimonial.company}</p>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         {/* CTA */}
         <section className="py-16 bg-background">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-lg md:text-3xl font-bold text-foreground mb-4">Ready to Transform IT for {sectorName}?</h2>
+            <h2 className="text-lg md:text-3xl font-bold text-foreground mb-4">Ready to Streamline Admin for {sectorName}?</h2>
             <p className="text-base md:text-lg text-muted-foreground mb-8">
-              Let's discuss how MPrimo Tech can address your industry-specific IT challenges.
+              Speak with our UK team to discuss how we can review your workflow on site and remove administrative bottlenecks.
             </p>
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">
-              <Link href="/contact">Schedule Consultation</Link>
+              <Link href="/contact">Schedule an On-Site Review</Link>
             </Button>
           </div>
         </section>

@@ -54,16 +54,11 @@ export default function DigitalWorkplacePage() {
         },
         {
           title: "Network & Connectivity",
-          description: "Reliable connections for home offices.",
+          description: "Reliable connections for on-site and remote offices.",
           icon: <TrendingUp className="h-6 w-6" />,
           href: "/services/network",
         },
       ]}
-      testimonial={{
-        text: "Before MPrimo, our team felt fragmented. The marketing team couldn't talk to sales, and the VPN was a nightmare. Now, it feels like we're all in the same room, even though we're spread across three time zones.",
-        name: "Lisa Anderson",
-        company: "Global Services Corp",
-      }}
       faqs={[
         {
           question: "Do we have to switch to Microsoft Teams?",

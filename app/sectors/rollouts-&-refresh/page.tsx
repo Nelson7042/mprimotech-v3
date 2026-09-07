@@ -39,30 +39,23 @@ export default function RolloutsRefreshPage() {
       relatedServices={[
         {
           title: "Professional Services",
-          description: "Expert consulting and implementation services.",
+          description: "Hands-on IT planning and rollout services.",
           icon: <Settings className="h-6 w-6" />,
           href: "/services/professional"
         },
         {
           title: "Cloud & Infrastructure",
-          description: "Modern cloud infrastructure solutions.",
+          description: "Modern cloud and system infrastructure solutions.",
           icon: <Package className="h-6 w-6" />,
           href: "/services/cloud"
         },
         {
           title: "Managed IT Services",
-          description: "Ongoing IT management and support.",
+          description: "Ongoing IT support and workflow maintenance.",
           icon: <RefreshCw className="h-6 w-6" />,
           href: "/services/managed-it"
         }
       ]}
-      caseStudyTitle="Enterprise-Wide Windows 11 Rollout"
-      caseStudyDescription="Successfully managed the rollout of Windows 11 across 1,200 workstations for a financial services company. Completed the project 2 weeks ahead of schedule with zero data loss and 99.8% user satisfaction through comprehensive testing and phased deployment approach."
-      testimonial={{
-        text: "The rollout was flawless. MPrimo's methodical approach and attention to detail ensured our business operations continued without interruption during the entire upgrade process.",
-        name: "Jennifer Walsh",
-        company: "Capital Financial Group"
-      }}
     />
   )
 }

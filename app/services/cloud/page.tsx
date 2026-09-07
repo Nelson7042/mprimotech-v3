@@ -15,10 +15,10 @@ export default function CloudPage() {
       ]}
       solutions={[
         "Modern cloud infrastructure that scales automatically with demand",
-        "40-60% cost reduction through optimization and right-sizing",
-        "Built-in disaster recovery with 99.99% uptime guarantee",
-        "Complete cost visibility and optimization strategies",
-        "Expert-managed migrations with zero downtime"
+        "Cost optimization through resource right-sizing and cloud efficiency",
+        "Built-in disaster recovery and high-availability architecture",
+        "Complete cost visibility and predictable budgeting",
+        "Expert-managed migrations planned to avoid operational disruption"
       ]}
       overview="Migrate to the cloud with confidence. We design, deploy, and manage cloud infrastructure tailored to your needs. From multi-cloud strategies to hybrid environments, we optimize cost, performance, and security. Our expertise spans AWS, Azure, GCP, and private cloud solutions."
       features={[
@@ -32,12 +32,12 @@ export default function CloudPage() {
         "Performance Monitoring & Analytics",
       ]}
       benefits={[
-        "Reduce infrastructure costs by 40-60% through optimization and right-sizing",
-        "Achieve 99.99% uptime with built-in redundancy and failover",
+        "Reduce infrastructure overhead through right-sizing and managed services",
+        "Achieve high availability with built-in redundancy and failover",
         "Scale infrastructure automatically based on demand",
-        "Eliminate capital expenditure on hardware with OpEx model",
+        "Eliminate capital expenditure on physical hardware",
         "Improve disaster recovery capabilities",
-        "Accelerate time-to-market for new applications",
+        "Accelerate deployment of new business tools and applications",
       ]}
       relatedServices={[
         {
@@ -47,10 +47,10 @@ export default function CloudPage() {
           href: "/services/managed-it",
         },
         {
-          title: "Cybersecurity",
-          description: "Secure your cloud infrastructure.",
+          title: "Risk Analysis",
+          description: "Assess systems and workflows.",
           icon: <Shield className="h-6 w-6" />,
-          href: "/services/cybersecurity",
+          href: "/services/risk-analysis",
         },
         {
           title: "Network & Connectivity",
@@ -59,11 +59,6 @@ export default function CloudPage() {
           href: "/services/network",
         },
       ]}
-      testimonial={{
-        text: "The cloud migration was seamless. MPrimo Tech managed everything from planning to execution. We're now running on a modern, scalable infrastructure with reduced costs.",
-        name: "David Thompson",
-        company: "Tech Innovation Inc.",
-      }}
       faqs={[
         {
           question: "How long does a cloud migration typically take?",

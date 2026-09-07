@@ -8,11 +8,11 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "MPrimo Tech - Enterprise IT Services & Solutions",
+    default: "MPrimo Tech | On-Site Admin Mapping & Automation for Care & Hospitality",
     template: "%s | MPrimo Tech"
   },
-  description: "Leading enterprise IT services provider offering managed IT, cybersecurity, cloud infrastructure, remote support, and B2B IT contracts. Transform your business with reliable technology solutions.",
-  keywords: ["enterprise IT services", "managed IT", "cybersecurity", "cloud infrastructure", "remote desktop support", "IT consulting", "B2B IT contracts", "digital workplace", "network connectivity", "backup solutions"],
+  description: "Small UK firm that comes on site to map messy admin in care homes and hospitality venues, and automates it. Practical IT, workflow streamlining, and reliable automations.",
+  keywords: ["care home admin automation", "hospitality workflow automation", "on-site admin mapping UK", "care admin streamlining", "small business IT UK", "workflow automation UK"],
   authors: [{ name: "MPrimo Tech" }],
   creator: "MPrimo Tech",
   publisher: "MPrimo Tech",
@@ -29,16 +29,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_GB",
     url: "https://mprimotech.com",
-    title: "MPrimo Tech - Enterprise IT Services & Solutions",
-    description: "Leading enterprise IT services provider offering managed IT, cybersecurity, cloud infrastructure, and comprehensive technology solutions.",
+    title: "MPrimo Tech | On-Site Admin Mapping & Automation for Care & Hospitality",
+    description: "Small UK firm that comes on site, maps messy admin in care and hospitality, and automates it.",
     siteName: "MPrimo Tech",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MPrimo Tech - Enterprise IT Services",
-    description: "Transform your business with reliable enterprise IT solutions and services.",
+    title: "MPrimo Tech | On-Site Admin Mapping & Automation",
+    description: "Small UK firm that comes on site, maps messy admin in care and hospitality, and automates it.",
     creator: "@mprimotech",
   },
   verification: {

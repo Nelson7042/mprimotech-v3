@@ -18,16 +18,16 @@ export default function B2BContractsPage() {
   const contractFeatures = [
     "Clear scope & deliverables",
     "Dedicated account manager", 
-    "Compliance built-in (GDPR, ISO 27001, SOC 2, HIPAA-ready)",
+    "Compliance built-in (UK GDPR, ISO 27001)",
     "Flexible 12–36 month terms",
-    "White-label options – your branding on everything",
-    "Priority 24/7 support when bids are on the line"
+    "Transparent SLAs and milestone tracking",
+    "Direct priority UK support"
   ];
 
   const perfectFor = [
-    "IT resellers & subcontractors",
-    "Government & regulated-industry bidders", 
-    "Enterprises needing guaranteed performance"
+    "Care homes & healthcare providers",
+    "Hospitality venues & group operators", 
+    "Growing businesses needing structured IT delivery"
   ];
 
   return (
@@ -97,26 +97,6 @@ export default function B2BContractsPage() {
           </div>
         </section>
 
-        {/* Testimonial Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-700">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="mb-8">
-              <Quote className="w-16 h-16 text-blue-200 mx-auto mb-6" />
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                Clients Say
-              </h2>
-            </div>
-            
-            <blockquote className="text-xl sm:text-2xl text-white font-medium mb-6 italic">
-              "B2B contract with MPrimo doubled our margins on subcontracted work."
-            </blockquote>
-            
-            <cite className="text-blue-200 font-semibold">
-              — Reseller, UK
-            </cite>
-          </div>
-        </section>
-
         {/* Key Benefits Grid */}
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,27 +119,27 @@ export default function B2BContractsPage() {
                 {
                   icon: <Users className="w-8 h-8" />,
                   title: "Dedicated Support",
-                  description: "Your own account manager who knows your business and is available when you need them most."
+                  description: "Your own UK account manager who knows your business and is available when you need them."
                 },
                 {
                   icon: <Shield className="w-8 h-8" />,
                   title: "Compliance Ready",
-                  description: "Built-in compliance for GDPR, ISO 27001, SOC 2, and HIPAA. We handle the complexity."
+                  description: "Built-in compliance for UK GDPR and ISO 27001 standards."
                 },
                 {
                   icon: <Clock className="w-8 h-8" />,
                   title: "Flexible Terms",
-                  description: "12-36 month agreements that adapt to your business growth and changing needs."
+                  description: "12-36 month agreements that adapt to your business growth and operational needs."
                 },
                 {
                   icon: <Award className="w-8 h-8" />,
-                  title: "White-Label Ready",
-                  description: "Your branding on everything. Your clients see your company, not ours."
+                  title: "Milestone Tracking",
+                  description: "Clear accountability with regular status updates and measurable milestones."
                 },
                 {
                   icon: <CheckCircle className="w-8 h-8" />,
                   title: "Priority Support",
-                  description: "24/7 priority support when bids are on the line. We're invested in your success."
+                  description: "Direct priority technical support when critical systems require attention."
                 }
               ].map((benefit, index) => (
                 <div key={index} className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
@@ -177,23 +157,23 @@ export default function B2BContractsPage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Trusted Across Industries
+                Serving Key UK Sectors
               </h2>
               <p className="text-xl text-gray-600">
-                From government contracts to healthcare compliance, we understand your sector's unique requirements
+                From care homes to hospitality operations, we understand your sector's unique workflows
               </p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                "Government",
+                "Care Homes",
+                "Hospitality & Venues", 
                 "Healthcare", 
-                "Financial Services",
-                "Manufacturing",
+                "Retail",
                 "Education",
-                "Legal",
-                "Non-Profit",
-                "Technology"
+                "Manufacturing",
+                "Financial Services",
+                "Commercial Services"
               ].map((industry, index) => (
                 <div key={index} className="text-center p-6 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">
                   <p className="font-semibold text-gray-900">{industry}</p>

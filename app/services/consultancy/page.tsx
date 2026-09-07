@@ -39,17 +39,12 @@ export default function ConsultancyPage() {
           href: "/services/managed-it",
         },
         {
-          title: "Cybersecurity",
-          description: "Security strategy & implementation.",
+          title: "Risk Analysis",
+          description: "On-site security and workflow analysis.",
           icon: <Shield className="h-6 w-6" />,
-          href: "/services/cybersecurity",
+          href: "/services/risk-analysis",
         },
       ]}
-      testimonial={{
-        text: "MPrimo Tech's consultants helped us develop a comprehensive IT strategy aligned with our business goals. The recommendations have been transformational.",
-        name: "James Morrison",
-        company: "Enterprise Holdings",
-      }}
       faqs={[
         {
           question: "How long does a consultancy engagement typically last?",

@@ -7,49 +7,42 @@ import { ArrowRight } from "lucide-react"
 export default function SectorsPage() {
   const sectors = [
     {
-      name: "Financial Services",
-      slug: "financial-services",
-      description:
-        "Specialized IT solutions for banks, insurance, and fintech companies with regulatory compliance and security focus.",
-      icon: "",
-      challenges: ["Regulatory Compliance", "Data Security", "High Availability"],
-    },
-    {
-      name: "Healthcare",
+      name: "Healthcare & Care Homes",
       slug: "healthcare",
       description:
-        "HIPAA-compliant IT infrastructure for hospitals, clinics, and healthcare providers ensuring data privacy.",
+        "Practical IT systems and admin automation for care homes, clinics, and healthcare providers.",
       icon: "",
-      challenges: ["Patient Data Protection", "System Uptime", "HIPAA Compliance"],
+      challenges: ["Care Record Admin", "Shift Rota Tracking", "CQC Compliance Paperwork"],
+    },
+    {
+      name: "Retail & Hospitality",
+      slug: "retail",
+      description: "POS reliability, booking systems, inventory management, and venue admin streamlining.",
+      icon: "",
+      challenges: ["Booking & Rota Admin", "Inventory Tracking", "Point of Sale Reliability"],
+    },
+    {
+      name: "Education",
+      slug: "education",
+      description: "Learning management systems, student data protection, and reliable campus-wide IT infrastructure.",
+      icon: "",
+      challenges: ["Learning Continuity", "Data Protection", "System Scalability"],
     },
     {
       name: "Manufacturing",
       slug: "manufacturing",
       description:
-        "Production support and industrial IT solutions for manufacturing facilities and supply chain optimization.",
+        "Production support and practical IT solutions for manufacturing facilities and supply chain coordination.",
       icon: "",
-      challenges: ["Production Uptime", "Supply Chain Integration", "IoT Systems"],
+      challenges: ["Production Continuity", "Supply Chain Integration", "Equipment Connectivity"],
     },
     {
-      name: "Retail",
-      slug: "retail",
-      description: "Point-of-sale systems, customer analytics, and omnichannel IT solutions for retail businesses.",
+      name: "Financial Services",
+      slug: "financial-services",
+      description:
+        "Secure IT solutions for financial practices and professional services with compliance focus.",
       icon: "",
-      challenges: ["POS Reliability", "Customer Data", "Inventory Management"],
-    },
-    {
-      name: "Education",
-      slug: "education",
-      description: "Learning management systems, student data protection, and campus-wide IT infrastructure.",
-      icon: "",
-      challenges: ["Learning Continuity", "Data Protection", "System Scalability"],
-    },
-    {
-      name: "Government",
-      slug: "government",
-      description: "Government-grade security and compliance for public sector organizations and agencies.",
-      icon: "",
-      challenges: ["Security Standards", "Compliance Requirements", "Data Sovereignty"],
+      challenges: ["Regulatory Compliance", "Data Security", "High Availability"],
     },
   ]
 

@@ -45,7 +45,7 @@ export default function RemoteDesktopSupportPage() {
         },
         {
           title: "Digital Workplace",
-          description: "Modern workplace solutions for remote and hybrid teams.",
+          description: "Modern workplace solutions for teams on site and on the go.",
           icon: <Headphones className="h-6 w-6" />,
           href: "/services/digital-workplace"
         },
@@ -56,13 +56,6 @@ export default function RemoteDesktopSupportPage() {
           href: "/services/professional"
         }
       ]}
-      caseStudyTitle="Global Manufacturing Company Desktop Support"
-      caseStudyDescription="Implemented comprehensive remote desktop support for a 500+ employee manufacturing company across 12 locations. Reduced average resolution time by 60% and achieved 99.5% uptime through proactive monitoring and standardized desktop environments."
-      testimonial={{
-        text: "MPrimo's remote support team feels like an extension of our internal IT department. They resolve issues quickly and our employees barely notice when problems occur.",
-        name: "David Rodriguez",
-        company: "Manufacturing Solutions Inc."
-      }}
     />
   )
 }

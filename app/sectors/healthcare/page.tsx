@@ -4,69 +4,58 @@ import { Shield, Lock, TrendingUp } from "lucide-react"
 export default function HealthcarePage() {
   return (
     <SectorTemplate
-      sectorName="Healthcare"
+      sectorName="Healthcare & Care Homes"
       icon="🏥"
-      overview="HIPAA-compliant IT solutions for hospitals, clinics, medical practices, and healthcare organizations"
+      overview="Practical IT and admin workflow automation for care homes, residential facilities, and clinics across the UK"
       challenges={[
-        "HIPAA compliance and patient data privacy",
-        "Protecting Electronic Health Records (EHR)",
-        "Ensuring 99.95%+ system uptime for patient care",
-        "Integrating multiple healthcare systems",
-        "Managing medical devices and IoT infrastructure",
+        "Managing resident care plans and paper documentation",
+        "Disjointed staff rotas and scheduling spreadsheets",
+        "UK GDPR and data protection compliance",
+        "Connecting disparate healthcare software systems",
+        "WiFi dead zones and device connectivity on site",
       ]}
       solutions={[
         {
-          title: "HIPAA Compliance",
-          description: "Automated compliance monitoring ensuring patient data protection and regulatory adherence.",
+          title: "Admin Workflow Automation",
+          description: "Connect care planning, rota, and billing tools to eliminate double-handling.",
         },
         {
-          title: "EHR Security",
-          description: "Secure Electronic Health Record systems with access controls and audit trails.",
+          title: "Secure Digital Records",
+          description: "Organized, secure access to resident documentation with role-based permissions.",
         },
         {
-          title: "Disaster Recovery",
-          description: "Business continuity plans ensuring patient care continuity during emergencies.",
-        },
-        {
-          title: "Medical Device Integration",
-          description: "Secure network infrastructure supporting medical devices and IoT systems.",
+          title: "On-Site Connectivity Audits",
+          description: "Ensure tablets and care devices stay connected everywhere across your facility.",
         },
         {
           title: "Data Backup & Recovery",
-          description: "Automated backups with rapid recovery capabilities for patient data.",
+          description: "Automated, encrypted backups protecting sensitive patient and resident data.",
         },
         {
-          title: "Staff Training",
-          description: "HIPAA compliance training for healthcare staff on data privacy protocols.",
+          title: "Practical Staff Training",
+          description: "Hands-on, plain English onboarding so care staff are confident using digital tools.",
         },
       ]}
       relatedServices={[
         {
-          title: "Cybersecurity",
-          description: "HIPAA-compliant security solutions.",
+          title: "Risk Analysis",
+          description: "On-site workflow and security reviews.",
           icon: <Shield className="h-6 w-6" />,
-          href: "/services/cybersecurity",
+          href: "/services/risk-analysis",
         },
         {
-          title: "Backup & Business Continuity",
-          description: "Disaster recovery for patient care continuity.",
+          title: "Backup & Continuity",
+          description: "Reliable data protection for care records.",
           icon: <Lock className="h-6 w-6" />,
           href: "/services/backup",
         },
         {
           title: "Managed IT Services",
-          description: "24/7 healthcare IT support.",
+          description: "Ongoing UK-based technical support.",
           icon: <TrendingUp className="h-6 w-6" />,
           href: "/services/managed-it",
         },
       ]}
-      caseStudyTitle="Hospital System Network Infrastructure Upgrade"
-      caseStudyDescription="A regional hospital network needed to upgrade their IT infrastructure to support new medical devices and improve patient data security. MPrimo Tech designed and implemented a secure, redundant network with HIPAA compliance. Result: 45% faster data access, improved patient care coordination, and zero HIPAA violations."
-      testimonial={{
-        text: "Patient care is our priority. MPrimo Tech ensures our IT infrastructure supports that mission while maintaining the security and compliance standards healthcare demands.",
-        name: "Dr. James Wilson",
-        company: "Regional Medical Center",
-      }}
     />
   )
 }

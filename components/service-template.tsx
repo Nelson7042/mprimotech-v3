@@ -20,11 +20,6 @@ interface ServiceTemplateProps {
     icon: React.ReactNode
     href: string
   }>
-  testimonial: {
-    text: string
-    name: string
-    company: string
-  }
   faqs: Array<{
     question: string
     answer: string
@@ -40,7 +35,6 @@ export default function ServiceTemplate({
   features,
   benefits,
   relatedServices,
-  testimonial,
   faqs,
 }: ServiceTemplateProps) {
   return (
@@ -136,19 +130,6 @@ export default function ServiceTemplate({
                   <p className="text-foreground leading-relaxed pt-1">{benefit}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonial */}
-        <section className="py-16 bg-primary text-white">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg border border-white/20">
-              <p className="text-xl mb-6 italic">"{testimonial.text}"</p>
-              <div>
-                <p className="font-semibold text-lg">{testimonial.name}</p>
-                <p className="opacity-90">{testimonial.company}</p>
-              </div>
             </div>
           </div>
         </section>

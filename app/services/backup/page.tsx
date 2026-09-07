@@ -41,10 +41,10 @@ export default function BackupPage() {
       ]}
       relatedServices={[
         {
-          title: "Cybersecurity",
-          description: "Protect against ransomware.",
+          title: "Risk Analysis",
+          description: "Protect against security and data loss risks.",
           icon: <Shield className="h-6 w-6" />,
-          href: "/services/cybersecurity",
+          href: "/services/risk-analysis",
         },
         {
           title: "Cloud & Infrastructure",
@@ -59,11 +59,6 @@ export default function BackupPage() {
           href: "/services/managed-it",
         },
       ]}
-      testimonial={{
-        text: "When ransomware hit, our backup system saved us. MPrimo Tech's disaster recovery plan worked perfectly. We lost only 30 minutes of data.",
-        name: "Patricia Lee",
-        company: "Healthcare Network",
-      }}
       faqs={[
         {
           question: "How often should we backup data?",

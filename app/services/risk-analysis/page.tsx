@@ -24,7 +24,7 @@ export default function RiskAnalysisPage() {
       features={[
         "Comprehensive Vulnerability Scanning",
         "Penetration Testing (Ethical Hacking)",
-        "Compliance Gap Analysis (HIPAA, GDPR, SOC 2)",
+        "Compliance Gap Analysis (UK GDPR, Cyber Essentials, ISO 27001)",
         "Vendor & Third-Party Risk Management",
         "Data Governance & Privacy Audits",
         "Business Continuity Stress-Testing",
@@ -59,31 +59,26 @@ export default function RiskAnalysisPage() {
           href: "/services/backup",
         },
       ]}
-      testimonial={{
-        text: "We thought our internal IT team had everything covered. MPrimo's audit uncovered a third-party vendor portal that was wide open to the public. That discovery alone saved us from a potential nightmare.",
-        name: "Marcus Thorne",
-        company: "Logistics Holdings LLC",
-      }}
       faqs={[
         {
           question: "Is this going to disrupt our work?",
           answer:
-            "90% of our analysis is passive. We look at configurations, interview key staff, and run background scans. We can perform the active 'stress tests' after hours so your team never notices a slowdown.",
+            "Most of our analysis is passive. We look at configurations, interview key staff on site, and run background scans without interrupting your daily operations.",
         },
         {
           question: "We are a small business. Do we really need a formal risk analysis?",
           answer:
-            "Actually, small businesses need it most. Large enterprises can survive a million-dollar mistake; small businesses often cannot. Hackers target smaller firms specifically because they know they are less likely to have audited their systems.",
+            "Actually, smaller teams need it most. Hackers target smaller firms knowing security checks are rare. We help you spot risks before they become costly problems.",
         },
         {
           question: "What do we get at the end?",
           answer:
-            "You won't get a 100-page jargon-filled document you can't read. You get an Executive Summary with a 'Traffic Light' system (Red/Yellow/Green) and a technical remediation plan that your engineers can act on immediately.",
+            "You won't get a 100-page jargon-filled document you can't read. You get an Executive Summary with a clear Traffic Light system (Red/Amber/Green) and an actionable step-by-step remediation plan.",
         },
         {
-          question: "Does this make us compliant with HIPAA/GDPR?",
+          question: "Does this help us comply with UK GDPR and data protection?",
           answer:
-            "The analysis itself doesn't make you compliant, but it is the first required step. It tells you exactly how far you are from the finish line so we can close the gap.",
+            "The analysis identifies data handling risks, access vulnerabilities, and compliance gaps so your team can close them quickly and confidently.",
         },
       ]}
     />

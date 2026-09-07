@@ -72,28 +72,28 @@ export default function BookConsultationPage() {
   // Booking Data
   const consultationTypes = [
     {
-      id: "discovery",
-      title: "The 'Good Fit' Chat",
-      duration: "15-20 Min",
-      description: "No sales deck. We just talk about your setup and see if we can help.",
-      icon: <User className="h-5 w-5" />,
+      id: "onsite",
+      title: "On-Site Admin & Workflow Review",
+      duration: "Half-Day / Full-Day",
+      description: "We visit your care home or venue in person, shadow your team, and map bottlenecks.",
+      icon: <FileSearch className="h-5 w-5" />,
       color: "bg-blue-100 text-blue-700"
     },
     {
-      id: "risk",
-      title: "Risk Analysis Review",
-      duration: "30 Min",
-      description: "Discuss specific vulnerabilities or compliance gaps with an expert.",
-      icon: <FileSearch className="h-5 w-5" />,
+      id: "discovery",
+      title: "Introductory Discovery Call",
+      duration: "20 Min",
+      description: "A friendly call to discuss your current paperwork challenges and see if we can help.",
+      icon: <User className="h-5 w-5" />,
       color: "bg-purple-100 text-purple-700"
     },
     {
-      id: "emergency",
-      title: "Urgent Incident",
-      duration: "Immediate",
-      description: "Active breach? Server down? Skip the line. Priority triage.",
+      id: "urgent",
+      title: "Urgent Admin Bottleneck",
+      duration: "Prompt Callback",
+      description: "Critical compliance deadline, audit, or handover emergency needing immediate help.",
       icon: <AlertOctagon className="h-5 w-5" />,
-      color: "bg-red-100 text-red-600"
+      color: "bg-amber-100 text-amber-700"
     },
   ]
 
@@ -104,65 +104,27 @@ export default function BookConsultationPage() {
       const d = new Date()
       d.setDate(today.getDate() + i + 1)
       return {
-        day: d.toLocaleDateString("en-US", { weekday: "short" }),
+        day: d.toLocaleDateString("en-GB", { weekday: "short" }),
         date: d.getDate(),
-        month: d.toLocaleDateString("en-US", { month: "short" }),
+        month: d.toLocaleDateString("en-GB", { month: "short" }),
         fullDate: d,
         available: ![0, 6].includes(d.getDay())
       }
     })
   }, [])
 
-  const timeSlots = ["09:00 AM", "10:30 AM", "11:00 AM", "01:00 PM", "02:30 PM", "04:00 PM"]
+  const timeSlots = ["09:30 AM", "11:00 AM", "01:30 PM", "03:00 PM", "04:30 PM"]
 
-  // Initialize and manage dynamic slot availability
+  // Initialize slot availability cleanly without fake countdown intervals
   useEffect(() => {
-    const initializeSlots = () => {
-      const slots: {[key: string]: string[]} = {}
-      dates.forEach(date => {
-        if (date.available) {
-          const dateKey = date.fullDate.toDateString()
-          // Randomly remove 1-3 slots from each day
-          const availableCount = Math.max(1, timeSlots.length - Math.floor(Math.random() * 3) - 1)
-          slots[dateKey] = timeSlots.slice(0, availableCount)
-        }
-      })
-      setAvailableSlots(slots)
-    }
-
-    initializeSlots()
-
-    // Randomly reduce slots every 30-60 seconds
-    const reduceSlots = setInterval(() => {
-      setAvailableSlots(prev => {
-        const updated = { ...prev }
-        const dateKeys = Object.keys(updated)
-        const randomDate = dateKeys[Math.floor(Math.random() * dateKeys.length)]
-        
-        if (updated[randomDate] && updated[randomDate].length > 1) {
-          updated[randomDate] = updated[randomDate].slice(0, -1)
-        }
-        return updated
-      })
-    }, Math.random() * 30000 + 30000) // 30-60 seconds
-
-    // Auto-increase slots when zero
-    const increaseSlots = setInterval(() => {
-      setAvailableSlots(prev => {
-        const updated = { ...prev }
-        Object.keys(updated).forEach(dateKey => {
-          if (updated[dateKey].length === 0) {
-            updated[dateKey] = timeSlots.slice(0, Math.floor(Math.random() * 3) + 2) // 2-4 slots
-          }
-        })
-        return updated
-      })
-    }, 10000) // Check every 10 seconds
-
-    return () => {
-      clearInterval(reduceSlots)
-      clearInterval(increaseSlots)
-    }
+    const slots: {[key: string]: string[]} = {}
+    dates.forEach(date => {
+      if (date.available) {
+        const dateKey = date.fullDate.toDateString()
+        slots[dateKey] = timeSlots
+      }
+    })
+    setAvailableSlots(slots)
   }, [dates])
 
   useEffect(() => {
@@ -176,7 +138,7 @@ export default function BookConsultationPage() {
   }
 
   const handleNext = () => {
-    if (step === 1 && selectedType === "emergency") {
+    if (step === 1 && selectedType === "urgent") {
       setStep(3)
     } else {
       setStep(step + 1)
@@ -184,7 +146,7 @@ export default function BookConsultationPage() {
   }
 
   const handleBack = () => {
-    if (step === 3 && selectedType === "emergency") {
+    if (step === 3 && selectedType === "urgent") {
         setStep(1)
     } else {
         setStep(step - 1)
@@ -198,19 +160,7 @@ export default function BookConsultationPage() {
     const selectedServiceTitle = consultationTypes.find(t => t.id === selectedType)?.title
     const fullDateString = selectedDate 
       ? dates.find(d => d.date === selectedDate)?.fullDate.toDateString() 
-      : "Immediate / Emergency"
-
-    const params = {
-      from_name: `${formData.firstName} ${formData.lastName}`,
-      reply_to: formData.email,
-      service_type: selectedServiceTitle,
-      requested_date: fullDateString,
-      requested_time: selectedTime || "ASAP",
-      message: formData.description,
-      subject: selectedType === "emergency" 
-        ? `🚨 URGENT: Emergency IT Support Request from ${formData.firstName} ${formData.lastName}`
-        : `New Consultation Request: ${selectedServiceTitle}`
-    }
+      : "Prompt Callback Request"
 
     try {
       // Use the same working EmailJS service from contact form
@@ -227,8 +177,8 @@ export default function BookConsultationPage() {
         requested_time: selectedTime || "ASAP",
         message: formData.description,
         to_name: "MPrimo Support Team",
-        subject: selectedType === "emergency" 
-          ? `🚨 URGENT: Emergency IT Support Request from ${formData.firstName} ${formData.lastName}`
+        subject: selectedType === "urgent" 
+          ? `🚨 URGENT: Admin Bottleneck Request from ${formData.firstName} ${formData.lastName}`
           : `New Consultation Request: ${selectedServiceTitle}`
       };
 
@@ -259,8 +209,8 @@ export default function BookConsultationPage() {
         
         {/* Mobile Header */}
         <div className="bg-primary text-white py-12 px-4 text-center sm:hidden">
-            <h1 className="text-3xl font-bold mb-2">Book Consultation</h1>
-            <p className="text-blue-100 text-sm">Direct access to Senior Engineers.</p>
+            <h1 className="text-3xl font-bold mb-2">Book an On-Site Review</h1>
+            <p className="text-blue-100 text-sm">Direct access to UK automation specialists.</p>
         </div>
 
         {/* Desktop Header */}
@@ -269,7 +219,7 @@ export default function BookConsultationPage() {
            <div className="relative z-10 max-w-3xl mx-auto">
              <h1 className="text-5xl font-bold mb-6">Stop playing phone tag.</h1>
              <p className="text-xl text-blue-100 leading-relaxed">
-               Book a time directly with a Senior Solution Architect.
+               Book an on-site admin review or discovery chat with our UK team.
              </p>
            </div>
         </section>
@@ -280,14 +230,13 @@ export default function BookConsultationPage() {
             
             {/* LEFT: Trust Signals */}
             <div className={`bg-slate-50 p-6 sm:p-10 border-b lg:border-b-0 lg:border-r border-slate-200 lg:w-5/12 ${step > 1 ? "hidden lg:block" : "block"}`}>
-               {/* ... (Same left content content as previous code) ... */}
                <div className="sticky top-6">
                     <span className="text-xs font-bold tracking-wider text-muted-foreground uppercase mb-6 block">
                         Why book with us?
                     </span>
                     
                     <h2 className="text-2xl font-bold text-foreground mb-8">
-                        Engineers, <span className="text-primary">Not Sharks.</span>
+                        Practical Specialists, <span className="text-primary">Not Salespeople.</span>
                     </h2>
                     
                     <div className="space-y-6">
@@ -297,7 +246,7 @@ export default function BookConsultationPage() {
                             </div>
                             <div>
                                 <h3 className="font-semibold text-sm">Respect For Time</h3>
-                                <p className="text-sm text-muted-foreground mt-1">We don't do hour-long sales decks. We dive straight into your problem.</p>
+                                <p className="text-sm text-muted-foreground mt-1">No long slide decks. We dive straight into where your admin gets bogged down.</p>
                             </div>
                         </div>
                         <div className="flex gap-4">
@@ -305,28 +254,17 @@ export default function BookConsultationPage() {
                                 <CheckCircle className="h-5 w-5 text-primary" />
                             </div>
                             <div>
-                                <h3 className="font-semibold text-sm">Real Value</h3>
-                                <p className="text-sm text-muted-foreground mt-1">Even if we don't work together, you'll leave with a clear roadmap.</p>
+                                <h3 className="font-semibold text-sm">On-Site & Hands-On</h3>
+                                <p className="text-sm text-muted-foreground mt-1">We come directly to your facility to see how your team works in reality.</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div className="mt-10 pt-8 border-t border-slate-200">
-                        <div className="flex items-center gap-1 mb-3">
-                            {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-orange-400 text-orange-400" />)}
-                        </div>
-                        <p className="text-sm text-slate-600 italic mb-4">
-                            "I expected a sales pitch and instead got a free architecture review. These guys actually know their stuff."
-                        </p>
-                        <div className="flex items-center gap-3">
-                            <img 
-                                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100" 
-                                alt="User" 
-                                className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
-                            />
+                        <div className="flex gap-4">
+                            <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm h-fit">
+                                <FileSearch className="h-5 w-5 text-primary" />
+                            </div>
                             <div>
-                                <p className="text-xs font-bold text-foreground">David Chen</p>
-                                <p className="text-[10px] text-muted-foreground uppercase tracking-wide">CTO, FinTech Global</p>
+                                <h3 className="font-semibold text-sm">Clear Action Plan</h3>
+                                <p className="text-sm text-muted-foreground mt-1">You receive a straightforward map of bottlenecks and an actionable automation plan.</p>
                             </div>
                         </div>
                     </div>
@@ -416,7 +354,7 @@ export default function BookConsultationPage() {
                         {selectedDate && (
                              <div className="mb-8 animate-in fade-in zoom-in duration-300">
                                 <label className="text-xs font-bold uppercase text-muted-foreground mb-3 block">
-                                  Available Slots ({availableSlots[dates.find(d => d.date === selectedDate)?.fullDate.toDateString() || '']?.length || 0} remaining)
+                                  Available Times
                                 </label>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                     {(availableSlots[dates.find(d => d.date === selectedDate)?.fullDate.toDateString() || ''] || []).map((time) => (
@@ -433,11 +371,6 @@ export default function BookConsultationPage() {
                                         </button>
                                     ))}
                                 </div>
-                                {(availableSlots[dates.find(d => d.date === selectedDate)?.fullDate.toDateString() || '']?.length || 0) === 0 && (
-                                  <p className="text-center text-sm text-orange-600 mt-4 animate-pulse">
-                                    ⏳ All slots taken. New slots opening soon...
-                                  </p>
-                                )}
                             </div>
                         )}
 
@@ -461,18 +394,17 @@ export default function BookConsultationPage() {
                 {step === 3 && (
                     <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full flex flex-col">
                         <h2 className="text-xl sm:text-2xl font-bold mb-6">
-                            {selectedType === 'emergency' ? 'Emergency Incident Details' : 'Final Details'}
+                            {selectedType === 'urgent' ? 'Urgent Admin Support Details' : 'Your Details'}
                         </h2>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
-                            {selectedType === 'emergency' && (
-                                <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex gap-3 text-red-800 text-sm">
-                                    <AlertOctagon className="h-5 w-5 flex-shrink-0" />
-                                    <p><strong>Priority Status:</strong> This will send an urgent priority email directly to our emergency response team.</p>
+                            {selectedType === 'urgent' && (
+                                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex gap-3 text-amber-800 text-sm">
+                                    <AlertOctagon className="h-5 w-5 flex-shrink-0 text-amber-600" />
+                                    <p><strong>Priority Status:</strong> This will alert our UK operations team for a prompt callback.</p>
                                 </div>
                             )}
 
-                            {/* 4. UPDATED: Inputs now use name, value, and onChange */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <label className="text-sm font-semibold">First Name</label>
@@ -485,13 +417,13 @@ export default function BookConsultationPage() {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold">Email</label>
+                                <label className="text-sm font-semibold">Work Email</label>
                                 <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" />
                             </div>
                             
                             <div className="space-y-2">
                                 <label className="text-sm font-semibold">
-                                    {selectedType === 'emergency' ? "Describe the Incident" : "What specific challenges are you facing?"}
+                                    {selectedType === 'urgent' ? "Describe the Admin Bottleneck or Deadline" : "What admin, paperwork, or rota challenges are you facing?"}
                                 </label>
                                 <textarea required name="description" value={formData.description} onChange={handleInputChange} rows={4} className="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none"></textarea>
                             </div>
@@ -504,9 +436,9 @@ export default function BookConsultationPage() {
                                     type="submit" 
                                     size="lg"
                                     disabled={isSubmitting}
-                                    className={`${selectedType === 'emergency' ? 'bg-red-600 hover:bg-red-700' : 'bg-primary hover:bg-primary/90'} text-white w-full sm:w-auto min-w-[150px]`}
+                                    className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto min-w-[150px]"
                                 >
-                                    {isSubmitting ? <Loader2 className="animate-spin h-5 w-5" /> : (selectedType === 'emergency' ? "Send Panic Report" : "Create Invite Request")}
+                                    {isSubmitting ? <Loader2 className="animate-spin h-5 w-5" /> : "Confirm Booking Request"}
                                 </Button>
                             </div>
                             

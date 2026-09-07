@@ -39,30 +39,23 @@ export default function HandsEyesServicesPage() {
       relatedServices={[
         {
           title: "Remote & Desktop Support",
-          description: "Comprehensive remote technical support services.",
+          description: "Comprehensive remote and on-site technical support.",
           icon: <Eye className="h-6 w-6" />,
           href: "/sectors/remote-&-desktop-support"
         },
         {
           title: "Professional Services",
-          description: "Expert IT consulting and implementation.",
+          description: "Hands-on IT consulting and implementation.",
           icon: <Hand className="h-6 w-6" />,
           href: "/services/professional"
         },
         {
           title: "Managed IT Services",
-          description: "Complete IT infrastructure management.",
+          description: "Direct on-site and remote IT support.",
           icon: <Users className="h-6 w-6" />,
           href: "/services/managed-it"
         }
       ]}
-      caseStudyTitle="Multi-Site Retail Chain Infrastructure Support"
-      caseStudyDescription="Provided hands and eyes services for a 50-location retail chain, enabling centralized IT management while maintaining local physical support. Reduced on-site visit costs by 70% while improving response times for critical issues through strategic placement of trained personnel."
-      testimonial={{
-        text: "Having MPrimo's hands and eyes service means we get the best of both worlds - expert remote support combined with reliable on-site presence when we need it most.",
-        name: "Marcus Thompson",
-        company: "Retail Solutions Network"
-      }}
     />
   )
 }

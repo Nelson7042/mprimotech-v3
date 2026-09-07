@@ -69,9 +69,6 @@ export default function Header() {
             <Link href="/sectors" className="text-sm font-medium text-foreground hover:text-primary transition">
               Sectors
             </Link>
-            {/* <Link href="/resources" className="text-sm font-medium text-foreground hover:text-primary transition">
-              Resources
-            </Link> */}
             <Link href="/about" className="text-sm font-medium text-foreground hover:text-primary transition">
               About
             </Link>
@@ -123,9 +120,6 @@ export default function Header() {
             <Link href="/sectors" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
               Sectors
             </Link>
-            {/* <Link href="/resources" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
-              Resources
-            </Link> */}
             <Link href="/about" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
               About
             </Link>

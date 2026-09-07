@@ -6,67 +6,56 @@ export default function FinancialServicesPage() {
     <SectorTemplate
       sectorName="Financial Services"
       icon="🏦"
-      overview="Secure, compliant IT infrastructure for financial institutions, banks, insurance companies, and fintech organizations"
+      overview="Secure, compliant IT infrastructure and workflow automation for financial practices, accounting firms, and advisors"
       challenges={[
-        "Regulatory Compliance (SOX, GDPR, CCPA, HIPAA)",
-        "Protecting sensitive financial and customer data",
-        "Maintaining 99.99% uptime for mission-critical systems",
-        "Managing complex legacy systems alongside modern infrastructure",
-        "Preventing fraud and cyber attacks",
+        "UK GDPR and financial regulatory data privacy",
+        "Protecting sensitive client financial information",
+        "Ensuring high availability for day-to-day operations",
+        "Managing software integrations between accounting and CRM tools",
+        "Preventing phishing, fraud, and unauthorized access",
       ]}
       solutions={[
         {
-          title: "Advanced Cybersecurity",
-          description: "Multi-layered security with encryption, threat detection, and fraud prevention systems.",
+          title: "System & Data Security",
+          description: "Multi-layered security with encryption, multi-factor authentication, and threat protection.",
         },
         {
-          title: "Compliance Management",
-          description: "Automated compliance monitoring for SOX, GDPR, and industry-specific regulations.",
+          title: "Compliance & Audit Support",
+          description: "Organized data handling and access logs aligned with financial regulatory standards.",
         },
         {
-          title: "High Availability Infrastructure",
-          description: "Redundant systems and disaster recovery ensuring continuous service availability.",
+          title: "Resilient Infrastructure",
+          description: "Redundant systems and automated backup ensuring operational continuity.",
         },
         {
-          title: "Data Protection",
-          description: "Encryption at rest and in transit, with advanced backup and recovery systems.",
+          title: "Data Backup & Recovery",
+          description: "Automated, encrypted backups protecting accounting and client databases.",
         },
         {
-          title: "Audit & Reporting",
-          description: "Comprehensive logging and reporting for regulatory audits and compliance verification.",
-        },
-        {
-          title: "Penetration Testing",
-          description: "Regular security assessments and vulnerability testing to identify threats.",
+          title: "Audit & Access Controls",
+          description: "Comprehensive logging and role-based permissions for sensitive accounts.",
         },
       ]}
       relatedServices={[
         {
-          title: "Cybersecurity",
-          description: "Advanced threat detection and compliance solutions.",
+          title: "Risk Analysis",
+          description: "Vulnerability and workflow assessments.",
           icon: <Shield className="h-6 w-6" />,
-          href: "/services/cybersecurity",
+          href: "/services/risk-analysis",
         },
         {
           title: "Managed IT Services",
-          description: "24/7 monitoring and support for critical systems.",
+          description: "Proactive IT support for critical systems.",
           icon: <Lock className="h-6 w-6" />,
           href: "/services/managed-it",
         },
         {
           title: "B2B IT Contracts",
-          description: "Enterprise-grade contracts with SLA guarantees.",
+          description: "Structured service agreements with clear deliverables.",
           icon: <TrendingUp className="h-6 w-6" />,
           href: "/services/b2b-contracts",
         },
       ]}
-      caseStudyTitle="Global Bank Upgrade & Security Implementation"
-      caseStudyDescription="A major international bank partnered with MPrimo Tech to upgrade their data center infrastructure and implement advanced cybersecurity measures. We successfully migrated their systems to a modern cloud infrastructure while maintaining SOX compliance. Result: 40% reduction in infrastructure costs, 99.99% uptime, and zero security breaches."
-      testimonial={{
-        text: "MPrimo Tech understands the financial services landscape. Their security expertise and compliance knowledge give us confidence that our systems and customer data are protected.",
-        name: "Margaret Chen",
-        company: "Global Capital Partners",
-      }}
     />
   )
 }

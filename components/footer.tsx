@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h3 className="text-lg font-bold mb-4">MPrimo Tech</h3>
-            <p className="text-sm opacity-90">Enterprise IT services and solutions for modern businesses.</p>
+            <p className="text-sm opacity-90">Small UK firm that comes on site, maps messy admin in care and hospitality, and automates it.</p>
           </div>
 
           {/* Services */}
@@ -54,18 +54,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Company & Support */}
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
+            <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
-              {/* <li>
-                <Link href="/resources" className="opacity-90 hover:opacity-100">
-                  Blog
-                </Link>
-              </li> */}
               <li>
-                <Link href="/case-studies" className="opacity-90 hover:opacity-100">
-                  Case Studies
+                <Link href="/about" className="opacity-90 hover:opacity-100">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/sectors" className="opacity-90 hover:opacity-100">
+                  Sectors
                 </Link>
               </li>
               <li>
@@ -74,8 +74,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="opacity-90 hover:opacity-100">
-                  About Us
+                <Link href="/contact" className="opacity-90 hover:opacity-100">
+                  Contact Us
                 </Link>
               </li>
             </ul>

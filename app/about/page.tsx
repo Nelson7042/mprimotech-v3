@@ -5,67 +5,31 @@ import Link from "next/link";
 import { Award, Users, Zap, Target } from "lucide-react";
 
 export default function AboutPage() {
-  // Although currently commented out in your render, I've updated these just in case you use them.
-  const team = [
-    {
-      name: "Robert Wilson",
-      role: "Chief Executive Officer",
-      bio: "Tech veteran with a passion for building teams that solve real-world problems.",
-      icon: "👨💼",
-    },
-    {
-      name: "Jennifer Martinez",
-      role: "Chief Technology Officer",
-      bio: "Cloud architect who believes technology should simplify work, not complicate it.",
-      icon: "👩💼",
-    },
-    {
-      name: "Michael Chen",
-      role: "VP of Cybersecurity",
-      bio: "Dedicated to keeping client data safe in an increasingly complex digital world.",
-      icon: "👨💻",
-    },
-    {
-      name: "Sarah Johnson",
-      role: "VP of Client Services",
-      bio: "Champion for the client voice, ensuring every partnership is built on trust.",
-      icon: "👩💼",
-    },
-  ];
-
   const values = [
     {
       icon: <Target className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: "Impact First",
+      title: "On-Site First",
       description:
-        "We don't just close tickets; we solve problems. We focus on the outcomes that actually move the needle for your business.",
+        "We don't try to understand your operations from behind a desk. We come to your site, watch the actual admin happen, and speak directly with your staff.",
     },
     {
       icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: "Curiosity",
+      title: "Practical Automation",
       description:
-        "Technology never stops changing, and neither do we. We're constantly learning so we can bring you the best solutions, not just the easiest ones.",
+        "We don't build over-engineered software. We eliminate repetitive data entry, paper forms, and dual-entry bottlenecks using tools your team can actually run.",
     },
     {
       icon: <Award className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: "Pride in Craft",
+      title: "Clarity Over Jargon",
       description:
-        "We sweat the small stuff. From clean code to clear communication, we believe quality is found in the details.",
+        "No buzzwords or complex tech jargon. We deliver straightforward workflows, clear handovers, and reliable day-to-day admin relief.",
     },
     {
       icon: <Users className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: "One Team",
-      description: "We don't hide behind contracts. We work alongside you, celebrating the wins and tackling the challenges together.",
+      title: "Personal Partnership",
+      description:
+        "As a small UK firm, you deal directly with the specialists who review your processes and build your automations — no call centres, no ticket queues.",
     },
-  ];
-
-  const timeline = [
-    { year: "2010", event: "MPrimo Tech is born" },
-    { year: "2013", event: "Grew to a family of 50+" },
-    { year: "2016", event: "Solidified our security standards (ISO 27001)" },
-    { year: "2018", event: "Expanded our footprint with a second office" },
-    { year: "2021", event: "Welcomed our 250th team member" },
-    { year: "2024", event: "Trusted by over 500 enterprises" },
   ];
 
   return (
@@ -76,10 +40,10 @@ export default function AboutPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary to-primary/80 text-white">
           <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-              More Than Just Tech Support.
+              A Small UK Firm Fixing Messy Admin.
             </h1>
             <p className="text-base sm:text-lg lg:text-xl opacity-90 max-w-3xl px-2">
-              We strip away the complexity of enterprise IT so you can focus on what matters most-growing your company.
+              We come on site to your care home, clinic, or hospitality venue, shadow your staff, map where admin bottlenecks happen, and build reliable automations.
             </p>
           </div>
         </section>
@@ -92,13 +56,13 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
               <p>
-                MPrimo Tech didn’t start in a boardroom; it started with a realisation. We noticed that too many organisations were drowning in tech complexity rather than being empowered by it. They were buying expensive tools but missing the human strategy to make them work. We wanted to change that.
+                MPrimo Tech is an independent UK firm established to solve a very specific problem: front-line teams in care and hospitality spend far too many hours trapped doing repetitive administrative tasks.
               </p>
               <p>
-                Over the years, we’ve learned that great IT is not just about servers, firewalls, and uptime statistics. It's about understanding the late-night deadlines you need to meet and the ambitious goals you’ve set for your stakeholders.
+                From hand-written shift handovers and duplicate rota spreadsheets to chaotic invoice chasing and booking coordination, messy paperwork steals valuable time from residents, patients, and guests.
               </p>
               <p>
-                Today, our team spans the globe, from the US and UK to Africa, Europe, and Asia, but our mindset remains local. Whether we're across the street or across the ocean, we are not just a supplier you call when things break. We are the partners you call to help you build what's next.
+                Instead of selling bloated generic software packages remotely, we visit your facility in person. We sit down with your team, observe your day-to-day workflows, identify the exact friction points, and automate them cleanly.
               </p>
             </div>
           </div>
@@ -159,17 +123,17 @@ export default function AboutPage() {
         <section className="py-8 sm:py-12 lg:py-16 bg-primary text-white">
           <div className="mx-auto max-w-3xl px-3 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
-              Ready to Upgrade Your IT Experience?
+              Ready to Stop Wasting Hours on Messy Admin?
             </h2>
             <p className="text-sm sm:text-base lg:text-lg opacity-90 mb-6 sm:mb-8 px-2">
-              Every day you delay securing your IT, the risk and the cost grows. The smart companies fix it before it breaks. Let’s talk.
+              Let us come on site, shadow your team, and map out exactly how much time you can save with straightforward automation.
             </p>
             <Button
               asChild
               size="lg"
               className="bg-white text-primary hover:bg-white/90"
             >
-              <Link href="/contact">Let's Talk</Link>
+              <Link href="/book-consultation">Book an On-Site Review</Link>
             </Button>
           </div>
         </section>

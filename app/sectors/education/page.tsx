@@ -6,46 +6,42 @@ export default function EducationPage() {
     <SectorTemplate
       sectorName="Education"
       icon="🎓"
-      overview="Learning management systems, student data protection, and campus-wide IT infrastructure for educational institutions"
+      overview="Student data protection, school WiFi, and reliable IT infrastructure for educational institutions"
       challenges={[
-        "Student data privacy and FERPA compliance",
-        "Learning Management System (LMS) availability",
-        "Supporting hybrid and remote learning",
-        "Campus WiFi and connectivity",
-        "Managing diverse device types and students",
+        "Student and staff data privacy under UK GDPR",
+        "Learning Management System (LMS) reliability",
+        "Managing classroom and remote learning tools",
+        "Campus and school-wide WiFi coverage",
+        "Managing diverse student and staff devices",
       ]}
       solutions={[
         {
-          title: "FERPA Compliance",
-          description: "Student data protection and FERPA compliance for educational records.",
+          title: "UK GDPR Compliance",
+          description: "Student data protection and compliance for educational records and safeguarding.",
         },
         {
-          title: "LMS Reliability",
-          description: "Learning platform uptime ensuring continuous educational delivery.",
+          title: "LMS & Classroom Reliability",
+          description: "Stable learning platform support ensuring continuous educational delivery.",
         },
         {
-          title: "Hybrid Learning Support",
-          description: "Infrastructure for seamless in-person, hybrid, and remote learning.",
+          title: "Blended Learning Infrastructure",
+          description: "Infrastructure for seamless in-person and digital learning workflows.",
         },
         {
           title: "Campus Connectivity",
-          description: "WiFi 6 infrastructure and wired connectivity for all campus areas.",
+          description: "Robust WiFi infrastructure and wired networking across classrooms and halls.",
         },
         {
           title: "Device Management",
-          description: "Management of diverse student devices including BYOD programs.",
-        },
-        {
-          title: "Cybersecurity Training",
-          description: "Student and staff awareness training on cybersecurity and data privacy.",
+          description: "Centralized management of classroom tablets, laptops, and staff devices.",
         },
       ]}
       relatedServices={[
         {
-          title: "Cybersecurity",
-          description: "FERPA compliance and student data protection.",
+          title: "Risk Analysis",
+          description: "Security and compliance reviews.",
           icon: <Shield className="h-6 w-6" />,
-          href: "/services/cybersecurity",
+          href: "/services/risk-analysis",
         },
         {
           title: "Network & Connectivity",
@@ -55,18 +51,11 @@ export default function EducationPage() {
         },
         {
           title: "Digital Workplace",
-          description: "Learning management and collaboration systems.",
+          description: "Collaboration and management systems.",
           icon: <TrendingUp className="h-6 w-6" />,
           href: "/services/digital-workplace",
         },
       ]}
-      caseStudyTitle="University Campus IT Infrastructure Modernization"
-      caseStudyDescription="A large university needed to modernize its campus IT infrastructure to support hybrid learning. MPrimo Tech deployed WiFi 6 campus-wide, modernized the LMS, and implemented FERPA compliance. Result: Seamless hybrid learning, 50% improvement in network capacity, and enhanced student experience."
-      testimonial={{
-        text: "MPrimo Tech helped us transition to hybrid learning successfully. Their campus infrastructure expertise ensured all students and faculty had reliable connectivity.",
-        name: "Prof. Jennifer Williams",
-        company: "State University",
-      }}
     />
   )
 }

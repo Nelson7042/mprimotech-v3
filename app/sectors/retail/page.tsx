@@ -4,69 +4,58 @@ import { Shield, Lock, TrendingUp } from "lucide-react"
 export default function RetailPage() {
   return (
     <SectorTemplate
-      sectorName="Retail"
+      sectorName="Retail & Hospitality"
       icon="🛍️"
-      overview="Point-of-sale systems, customer analytics, and omnichannel IT solutions for retail businesses"
+      overview="Practical IT systems, POS reliability, and admin workflow automation for hospitality venues, restaurants, and retail"
       challenges={[
-        "POS system reliability during peak hours",
-        "Payment Card Industry (PCI) compliance",
-        "Customer data privacy and protection",
-        "Omnichannel inventory management",
-        "Real-time analytics for customer insights",
+        "POS and booking system reliability during peak trading hours",
+        "Disjointed staff rotas and shift cover spreadsheets",
+        "Payment security and customer data compliance",
+        "Inventory tracking and supplier ordering friction",
+        "WiFi connectivity across venue dining, bar, and outdoor areas",
       ]}
       solutions={[
         {
-          title: "POS System Reliability",
-          description: "Redundant POS infrastructure ensuring continuous sales capability.",
+          title: "POS & Booking Reliability",
+          description: "Stable setup ensuring your till, card readers, and booking software do not freeze mid-service.",
         },
         {
-          title: "PCI Compliance",
-          description: "Payment data protection and PCI-DSS compliance for payment systems.",
+          title: "Admin Workflow Automation",
+          description: "Connect shift rotas, timesheets, and payroll to stop manual spreadsheet double-handling.",
         },
         {
-          title: "Customer Data Protection",
-          description: "Secure storage and management of customer information.",
+          title: "Payment & Data Security",
+          description: "Protect customer data and maintain PCI-DSS payment compliance without slowing down service.",
         },
         {
-          title: "Inventory Integration",
-          description: "Real-time inventory sync across all channels and locations.",
+          title: "Inventory & Supplier Sync",
+          description: "Streamline stock counting and supplier order tracking across your locations.",
         },
         {
-          title: "Analytics Platform",
-          description: "Customer behavior analytics for personalization and sales optimization.",
-        },
-        {
-          title: "Mobile & Omnichannel",
-          description: "Seamless omnichannel experience across web, mobile, and physical stores.",
+          title: "On-Site Venue WiFi",
+          description: "Dedicated, segregated networks for customer access, kitchen displays, and payment terminals.",
         },
       ]}
       relatedServices={[
         {
-          title: "Cybersecurity",
-          description: "PCI-DSS and customer data protection.",
+          title: "Risk Analysis",
+          description: "On-site system audits.",
           icon: <Shield className="h-6 w-6" />,
-          href: "/services/cybersecurity",
+          href: "/services/risk-analysis",
         },
         {
           title: "Cloud & Infrastructure",
-          description: "Scalable retail infrastructure.",
+          description: "Scalable venue systems.",
           icon: <Lock className="h-6 w-6" />,
           href: "/services/cloud",
         },
         {
           title: "Managed IT Services",
-          description: "24/7 retail IT support.",
+          description: "Dedicated UK IT support.",
           icon: <TrendingUp className="h-6 w-6" />,
           href: "/services/managed-it",
         },
       ]}
-      caseStudyTitle="Omnichannel Retail Transformation"
-      caseStudyDescription="A national retail chain upgraded to an omnichannel platform with MPrimo Tech's infrastructure support. We implemented cloud-based POS systems, inventory management, and customer analytics. Result: 60% improvement in inventory accuracy, seamless customer experience, and 35% increase in mobile sales."
-      testimonial={{
-        text: "Our omnichannel strategy needed reliable IT infrastructure. MPrimo Tech delivered the platform that connects our stores, website, and mobile app seamlessly.",
-        name: "Lisa Anderson",
-        company: "Fashion Retail Group",
-      }}
     />
   )
 }

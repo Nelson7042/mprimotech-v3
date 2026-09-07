@@ -64,71 +64,57 @@ export default function Home() {
     document.addEventListener("mouseleave", handleMouseLeave);
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
   }, []);
-  const stats = [
-    { label: "Enterprise Trust Us", value: "50+" },
-    { label: "Deployments", value: "150+" },
-    { label: "Client Retention Rate", value: "98%" },
-  ];
-
-  const newServices = [
-    "Managed IT Services",
-    "Cloud & Remote Infrastructure",
-    "B2B IT Support Contracts",
-    "24/7 Global Monitoring",
-  ];
-
   const services = [
     {
-      title: "Managed IT Services",
+      title: "Admin Workflow Automation",
       description:
-        "We watch the screens so you don't have to. 24/7 monitoring that catches issues before they interrupt your day.",
+        "Stop double-handling paperwork and spreadsheets. We connect your daily tools and automate repetitive admin tasks.",
       icon: <Zap className="h-6 w-6" />,
       href: "/services/managed-it",
     },
     {
-      title: "Risk Analysis",
+      title: "On-Site Workflow Audits",
       description:
-        "You can't fix what you can't see. We find the blind spots and vulnerabilities in your stack before the bad guys do.",
-      icon: <FileSearch className="h-6 w-6" />, // Updated icon
-      href: "/services/risk-analysis", // Updated link
+        "We visit your care home or venue in person to shadow your staff, identify bottlenecks, and map your actual processes.",
+      icon: <FileSearch className="h-6 w-6" />,
+      href: "/services/risk-analysis",
     },
     {
-      title: "Cloud & Infrastructure",
+      title: "Cloud & Systems Integration",
       description:
-        "Modernize your backbone. We build scalable environments that grow effortlessly alongside your revenue.",
+        "Get your rota, CRM, billing, and care planning software talking to each other without messy CSV exports.",
       icon: <Cloud className="h-6 w-6" />,
       href: "/services/cloud",
     },
     {
-      title: "Digital Workplace",
+      title: "Digital Workplace Setup",
       description:
-        "Work is an activity, not a place. Give your team the tools to collaborate securely from anywhere.",
+        "Equip carers, managers, and front-of-house staff with reliable tablets, shared folders, and simple secure logins.",
       icon: <Users className="h-6 w-6" />,
       href: "/services/digital-workplace",
     },
     {
-      title: "Network & Connectivity",
+      title: "Reliable Site Connectivity",
       description:
-        "Slow WiFi kills momentum. We design high-performance networks that keep your team moving fast.",
+        "WiFi dead zones in care homes or restaurants stop work in its tracks. We audit and stabilize your on-site network.",
       icon: <TrendingUp className="h-6 w-6" />,
       href: "/services/network",
     },
     {
-      title: "Backup & Continuity",
+      title: "Backup & Data Protection",
       description:
-        "Your safety net. If disaster strikes, we ensure your data is safe and your recovery is rapid.",
+        "Ensure resident records, financial details, and guest data are securely backed up with rapid recovery.",
       icon: <Lock className="h-6 w-6" />,
       href: "/services/backup",
     },
   ];
 
   const sectors = [
-    "Financial Services",
     "Healthcare",
-    "Manufacturing",
     "Retail",
     "Education",
-    "Government",
+    "Manufacturing",
+    "Financial Services",
     "Remote & Desktop Support",
     "Rollouts & Refresh",
     "Hands & Eyes Services",
@@ -152,16 +138,16 @@ export default function Home() {
               Before you go...
             </h3>
             <p className="text-base sm:text-lg text-foreground mb-6">
-              Get a complimentary IT review for your next bid or project
+              Get an on-site admin & workflow review for your care or hospitality business
             </p>
             <p className="text-sm text-muted-foreground mb-6">
-              (No cost, no sales pitch)
+              (No cost, no jargon, no sales pitch)
             </p>
             <Button
               asChild
               className="w-full bg-primary hover:bg-primary/90 text-white text-base sm:text-lg py-6"
             >
-              <Link href="/contact">→ Yes, Send me the checklist</Link>
+              <Link href="/contact">→ Yes, Request a Review</Link>
             </Button>
           </div>
         </div>
@@ -178,11 +164,15 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 z-10 relative">
             <div className="text-center">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 text-balance leading-tight">
-                Reliable IT that keeps your business running securely,
-                efficiently, and 24/7.
+                We come on site to map your messy admin — and automate it.
               </h1>
-              <ul className="space-y-4 max-w-md mx-auto mb-8 text-left">
-                {newServices.map((service, index) => (
+              <ul className="space-y-4 max-w-xl mx-auto mb-8 text-left">
+                {[
+                  "Small UK firm supporting care homes, healthcare & hospitality venues",
+                  "Hands-on site visits to map paper records, spreadsheets & duplicate tasks",
+                  "Clean automations that connect your existing systems",
+                  "Direct UK team support with zero tech jargon",
+                ].map((item, index) => (
                   <li
                     key={index}
                     className="flex items-center text-lg sm:text-xl"
@@ -191,7 +181,7 @@ export default function Home() {
                       className="text-[#2D60A3] mr-3 flex-shrink-0"
                       size={24}
                     />
-                    <span>{service}</span>
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -204,10 +194,10 @@ export default function Home() {
                 />
                 <div>
                   <p className="font-semibold text-lg text-blue-800 mb-1">
-                    Free IT Strategy Session – Only 5 Slots Left This Week
+                    On-Site Admin & Workflow Review
                   </p>
                   <p className="text-sm text-blue-800">
-                    Book in 60 seconds. No obligation.
+                    Speak directly with our UK team about your workflow. No obligation.
                   </p>
                 </div>
               </div>
@@ -217,7 +207,7 @@ export default function Home() {
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 text-base sm:text-lg px-8 py-6"
                 >
-                  <Link href="/contact">Send Enquiry</Link>
+                  <Link href="/contact">Schedule On-Site Discovery</Link>
                 </Button>
               </div>
             </div>
@@ -227,38 +217,38 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
               <img
                 src="./assets/enterprise.jpg"
-                alt="Modern IT Infrastructure"
+                alt="On-Site IT and Automation"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
         </section>
 
-        {/* Stats Section */}
+        {/* Process Section */}
         <section className="bg-[#1A2B6B] py-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl sm:text-5xl font-bold text-white text-center mb-16 leading-tight">
-              Why Enterprises Trust <br /> MPrimo Tech
+              How We Work With You On Site
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <StatCard
-                icon={Lock}
-                value="50+"
-                title="Enterprise Clients"
-                description="Trusted globally across finance, government, logistics & tech"
+                icon={Users}
+                value="01"
+                title="We Come On Site"
+                description="We visit your care home or venue in person to see how your team really works."
+              />
+              <StatCard
+                icon={FileSearch}
+                value="02"
+                title="Map the Messy Admin"
+                description="We trace every spreadsheet, paper form, rota clash, and duplicated task."
               />
               <StatCard
                 icon={Rocket}
-                value="150+"
-                title="Successful Deployments"
-                description="Cloud, automation, cybersecurity & full IT infrastructure"
-              />
-              <StatCard
-                icon={Briefcase}
-                value="98%"
-                title="Client Retention Rate"
-                description="Because our support actually solves problems."
+                value="03"
+                title="Automate It"
+                description="We connect systems and build clean automations that give your team hours back each week."
               />
             </div>
           </div>
@@ -377,16 +367,16 @@ export default function Home() {
           <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Why Contractors Choose MPrimo
+                Why Care & Hospitality Teams Choose Us
               </h2>
             </div>
             <div className="grid gap-4 sm:gap-5">
               {[
-                "One partner for everything – no more juggling vendors",
-                "Dedicated manager who knows your projects",
-                "White-label options – your brand, our backbone",
-                "24/7 real engineers (US | UK | Africa)",
-                "Proven in government, finance & manufacturing bids",
+                "Direct on-site visits across the UK to understand your actual setup",
+                "Plain English guidance — zero confusing IT jargon or vendor buzzwords",
+                "Built around your existing tools, rotas, and daily operations",
+                "Hands-on staff training and side-by-side walk-throughs",
+                "A dedicated UK point of contact who picks up the phone",
               ].map((item, index) => (
                 <div
                   key={index}
@@ -402,44 +392,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-16 sm:py-24 bg-gradient-to-br from-blue-50/50 to-white">
-          <div className="mx-auto max-w-6xl px-3 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                What Clients Say
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Trusted by organisations across defense, finance, and technology
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
-              <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-border">
-                <Quote className="w-8 h-8 text-primary mb-4" />
-                <p className="text-base sm:text-lg text-foreground mb-4 italic">
-                  "MPrimo's uptime record helped us win a $14 million government
-                  contract."
-                </p>
-                <p className="text-sm sm:text-base text-muted-foreground font-semibold">
-                  — CTO
-                </p>
-                <div className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium mt-2">Defense Contractor</div>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-border">
-                <Quote className="w-8 h-8 text-primary mb-4" />
-                <p className="text-base sm:text-lg text-foreground mb-4 italic">
-                  "White-labeled their service - clients think it's my team, I
-                  keep the margin."
-                </p>
-                <p className="text-sm sm:text-base text-muted-foreground font-semibold">
-                  — Independent IT Reseller
-                </p>
-                <div className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium mt-2">MSP Partner</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Industries Section */}
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
           <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
@@ -448,8 +400,7 @@ export default function Home() {
                 We Speak Your Language
               </h2>
               <p className="text-muted-foreground">
-                Whether you are handling patient data or processing payments, we
-                know the regulations.
+                Whether you manage resident care plans, shift rotas, or front-of-house operations, we understand the daily workflow.
               </p>
             </div>
 
@@ -476,12 +427,10 @@ export default function Home() {
         <section className="py-16 sm:py-24 bg-secondary/30">
           <div className="mx-auto max-w-3xl px-3 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-foreground">
-              Enough reading. Let's fix your IT.
+              Stop wasting hours on messy admin.
             </h2>
             <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-8 px-2 max-w-2xl mx-auto">
-              Every day you wait is another day dealing with slow systems and
-              security risks. Let's have a 15-minute conversation about your
-              goals.
+              Every week lost to paper records, duplicate spreadsheets, and clunky systems is time taken away from your residents and guests. Let's have a 15-minute conversation.
             </p>
             <Button
               asChild

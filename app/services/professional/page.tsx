@@ -45,11 +45,6 @@ export default function ProfessionalServicesPage() {
           href: "/services/consultancy",
         },
       ]}
-      testimonial={{
-        text: "MPrimo Tech delivered our CRM implementation on time and under budget. Their team understood our business needs and delivered exactly what we required.",
-        name: "Susan Taylor",
-        company: "Sales Force Inc.",
-      }}
       faqs={[
         {
           question: "How do you structure project pricing?",
