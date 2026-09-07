@@ -7,148 +7,178 @@ import { Button } from "@/components/ui/button"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
+  const [sectorsOpen, setSectorsOpen] = useState(false)
 
-  <Link href="/services">
-  Services
-</Link>
-  
   const sectors = [
     { name: "Care Homes", href: "/sectors/care-homes" },
     { name: "Hospitality", href: "/sectors/hospitality" },
   ]
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white shadow-sm">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="">
-            <img
-              src="/assets/mprimo 2.png"
-              alt="MPrimo Tech logo"
-              className="w-auto object-contain h-[60px] md:h-[150px]"
-            />
+    <header className="w-full border-b bg-background">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <span className="text-xl font-bold">MPrimo Tech</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center gap-6 md:flex">
+          <Link
+            href="/"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            Home
           </Link>
 
-          {/* Desktop Menu */}  
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium text-foreground hover:text-primary transition">
-              Home
-            </Link>
+          <Link
+            href="/services"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            Services
+          </Link>
 
-            {/* What We Do Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition">
-                What We Do
-                <ChevronDown className="h-4 w-4" />
-              </button>
-              <div className="absolute left-0 mt-0 hidden w-56 bg-white border border-border rounded-lg shadow-lg group-hover:block py-2">
-                {services.map((service) => (
-                  <Link
-                    key={service.href}
-                    href={service.href}
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
+          {/* Sectors Dropdown */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setSectorsOpen(!sectorsOpen)}
+              className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary"
+            >
+              Sectors
+              <ChevronDown className="h-4 w-4" />
+            </button>
 
-            {/* Sectors Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition">
-                Sectors
-                <ChevronDown className="h-4 w-4" />
-              </button>
-              <div className="absolute left-0 mt-0 hidden w-48 bg-white border border-border rounded-lg shadow-lg group-hover:block py-2">
+            {sectorsOpen && (
+              <div className="absolute left-0 top-full z-50 mt-2 w-48 rounded-md border bg-background p-2 shadow-lg">
                 {sectors.map((sector) => (
                   <Link
                     key={sector.href}
                     href={sector.href}
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition"
+                    onClick={() => setSectorsOpen(false)}
+                    className="block rounded-md px-3 py-2 text-sm hover:bg-muted"
                   >
                     {sector.name}
                   </Link>
                 ))}
               </div>
-            </div>
-
-            <Link href="/about" className="text-sm font-medium text-foreground hover:text-primary transition">
-              About
-            </Link>
-            <Link href="/faq" className="text-sm font-medium text-foreground hover:text-primary transition">
-              FAQ
-            </Link>
-            <Link href="/contact" className="text-sm font-medium text-foreground hover:text-primary transition">
-              Contact
-            </Link>
+            )}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex">
-            <Button asChild className="bg-primary hover:bg-primary/90 text-white">
-              <Link href="/contact">Book a Site Visit</Link>
-            </Button>
-          </div>
+          <Link
+            href="/about"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            About
+          </Link>
 
-          {/* Mobile Menu Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 hover:bg-secondary rounded transition">
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
+          <Link
+            href="/faq"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            FAQ
+          </Link>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden pb-4 border-t border-border">
-            <Link href="/" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
+          <Link
+            href="/contact"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            Contact
+          </Link>
+
+          <Button asChild>
+            <Link href="/book-consultation">
+              Book a 20-minute process review
+            </Link>
+          </Button>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="border-t md:hidden">
+          <nav className="container mx-auto flex flex-col gap-2 px-4 py-4">
+            <Link
+              href="/"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
+            >
               Home
             </Link>
-            
-            <button
-              onClick={() => setServicesOpen(!servicesOpen)}
-              className="w-full text-left px-2 py-2 text-sm font-medium text-foreground hover:text-primary flex items-center gap-1"
+
+            <Link
+              href="/services"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
             >
-              What We Do
-              <ChevronDown className={`h-4 w-4 transition ${servicesOpen ? "rotate-180" : ""}`} />
-            </button>
-            {servicesOpen && (
-              <div className="pl-4 bg-secondary/30">
-                {services.map((service) => (
-                  <Link
-                    key={service.href}
-                    href={service.href}
-                    className="block px-2 py-2 text-sm text-foreground hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-            
-            <Link href="/sectors/care-homes" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
+              Services
+            </Link>
+
+            <Link
+              href="/sectors/care-homes"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
+            >
               Care Homes
             </Link>
-            <Link href="/sectors/hospitality" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
+
+            <Link
+              href="/sectors/hospitality"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
+            >
               Hospitality
             </Link>
-            <Link href="/about" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
+
+            <Link
+              href="/about"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
+            >
               About
             </Link>
-            <Link href="/faq" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
+
+            <Link
+              href="/faq"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
+            >
               FAQ
             </Link>
-            <Link href="/contact" className="block px-2 py-2 text-sm font-medium text-foreground hover:text-primary">
+
+            <Link
+              href="/contact"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
+            >
               Contact
             </Link>
-            <Button asChild className="mt-4 w-full bg-primary hover:bg-primary/90 text-white">
-              <Link href="/contact">Book a Site Visit</Link>
+
+            <Button asChild className="mt-2">
+              <Link
+                href="/book-consultation"
+                onClick={() => setIsOpen(false)}
+              >
+                Book a 20-minute process review
+              </Link>
             </Button>
-          </div>
-        )}
-      </nav>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }
