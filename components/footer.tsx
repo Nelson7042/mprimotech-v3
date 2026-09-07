@@ -12,65 +12,55 @@ export default function Footer() {
             <p className="text-sm opacity-90">UK-based on-site IT support for care homes and hospitality. We untangle messy admin and automate manual work.</p>
           </div>
 
-          {/* Services */}
+          {/* What We Do */}
           <div>
             <h3 className="font-semibold mb-4">What We Do</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/services/managed-it" className="opacity-90 hover:opacity-100">
+                <Link href="/services/on-site-it-support" className="opacity-90 hover:opacity-100">
                   On-Site IT Support
                 </Link>
               </li>
               <li>
-                <Link href="/services/risk-analysis" className="opacity-90 hover:opacity-100">
+                <Link href="/services/admin-automation" className="opacity-90 hover:opacity-100">
                   Admin Automation
                 </Link>
               </li>
               <li>
-                <Link href="/services/cloud" className="opacity-90 hover:opacity-100">
+                <Link href="/services/system-untangling" className="opacity-90 hover:opacity-100">
                   System Untangling
                 </Link>
               </li>
               <li>
-                <Link href="/services/digital-workplace" className="opacity-90 hover:opacity-100">
-                  Team Productivity
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/network" className="opacity-90 hover:opacity-100">
+                <Link href="/services/network-wifi" className="opacity-90 hover:opacity-100">
                   Network & WiFi
                 </Link>
               </li>
               <li>
-                <Link href="/services/backup" className="opacity-90 hover:opacity-100">
+                <Link href="/services/backup-safety" className="opacity-90 hover:opacity-100">
                   Backup & Safety
                 </Link>
               </li>
               <li>
-                <Link href="/services/b2b-contracts" className="opacity-90 hover:opacity-100">
+                <Link href="/services/ongoing-support" className="opacity-90 hover:opacity-100">
                   Ongoing Support
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Sectors */}
           <div>
-            <h3 className="font-semibold mb-4">Company</h3>
+            <h3 className="font-semibold mb-4">Sectors</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about" className="opacity-90 hover:opacity-100">
-                  About Us
+                <Link href="/sectors/care-homes" className="opacity-90 hover:opacity-100">
+                  Care Homes
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="opacity-90 hover:opacity-100">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="opacity-90 hover:opacity-100">
-                  FAQ
+                <Link href="/sectors/hospitality" className="opacity-90 hover:opacity-100">
+                  Hospitality
                 </Link>
               </li>
             </ul>
@@ -88,8 +78,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <a href="tel:++443302237450" className="opacity-90 hover:opacity-100">
-                 +44 (330) 223-7450
+                <a href="tel:+443302237450" className="opacity-90 hover:opacity-100">
+                  +44 (330) 223-7450
                 </a>
               </li>
               <li className="flex items-start gap-2">
@@ -102,7 +92,7 @@ export default function Footer() {
 
         {/* Footer Bottom */}
         <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm opacity-90">&copy; 2025 MPrimo Tech. All rights reserved.</p>
+          <p className="text-sm opacity-90">&copy; 2026 MPrimo Tech. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0 text-sm">
             <Link href="/privacy" className="opacity-90 hover:opacity-100">
               Privacy Policy
