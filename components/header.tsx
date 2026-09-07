@@ -9,15 +9,10 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
 
-  const services = [
-    { name: "On-Site IT Support", href: "/services/on-site-it-support" },
-    { name: "Admin Automation", href: "/services/admin-automation" },
-    { name: "System Untangling", href: "/services/system-untangling" },
-    { name: "Network & WiFi", href: "/services/network-wifi" },
-    { name: "Backup & Safety", href: "/services/backup-safety" },
-    { name: "Ongoing Support", href: "/services/ongoing-support" },
-  ]
-
+  <Link href="/services">
+  Services
+</Link>
+  
   const sectors = [
     { name: "Care Homes", href: "/sectors/care-homes" },
     { name: "Hospitality", href: "/sectors/hospitality" },
