@@ -90,7 +90,7 @@ export default function Home() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28 bg-gradient-to-br from-white via-blue-50 to-white">
+        <section className="relative py-12 sm:py-20 lg:py-32 bg-gradient-to-br from-white via-blue-50 to-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-sm sm:text-base font-semibold tracking-wide text-primary uppercase mb-4">
