@@ -1,390 +1,227 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import ServiceCard from "@/components/service-card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import {
-  FileSearch,
-  Cloud,
-  Users,
-  Lock,
-  Zap,
-  TrendingUp,
-  CheckCircle,
-  Bell,
-  Briefcase,
-  Rocket,
-  X,
-  Quote,
-} from "lucide-react";
+import { Mail, Phone, Clock } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
-interface StatCardProps {
-  icon: React.ElementType;
-  value: string;
-  title: string;
-  description: string;
-}
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+    ongoingSupport: false,
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-const StatCard: React.FC<StatCardProps> = ({
-  icon: Icon,
-  value,
-  title,
-  description,
-}) => {
-  return (
-    <div className="bg-[#263877] p-8 rounded-2xl shadow-lg flex flex-col items-center text-center border border-[#3A4D8C]">
-      <Icon
-        className={`w-12 h-12 flex-shrink-0 mb-4 ${
-          Icon === Rocket ? "text-[#f4a300]" : "text-white"
-        }`}
-      />
-      <p className="text-5xl font-bold text-white mb-2">{value}</p>
-      <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
-      <p className="text-base text-blue-100 leading-relaxed max-w-xs">
-        {description}
-      </p>
-    </div>
-  );
-};
+  const handleChange = (e: any) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
 
-export default function Home() {
-  const [showPopup, setShowPopup] = useState(false);
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  useEffect(() => {
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !sessionStorage.getItem("exitPopupShown")) {
-        setShowPopup(true);
-        sessionStorage.setItem("exitPopupShown", "true");
-      }
-    };
+    try {
+      const templateId = "template_hjm0zud";
+      const serviceId = "service_u8ksijg";
+      const publicKey = "ktFHFC2F9khjQQDVg";
 
-    document.addEventListener("mouseleave", handleMouseLeave);
-    return () => document.removeEventListener("mouseleave", handleMouseLeave);
-  }, []);
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        ongoing_support: formData.ongoingSupport ? "Yes" : "No",
+        to_name: "MPrimo Tech Team",
+      };
 
-  const services = [
-    {
-      title: "On-Site IT Support",
-      description:
-        "We come to your location. No remote-only ticketing – we see your systems face-to-face.",
-      icon: <Zap className="h-6 w-6" />,
-      href: "/services/managed-it",
-    },
-    {
-      title: "Admin Automation",
-      description:
-        "We find the manual processes, spreadsheets, and legacy software that eat your team's time – and automate them.",
-      icon: <FileSearch className="h-6 w-6" />,
-      href: "/services/risk-analysis",
-    },
-    {
-      title: "System Untangling",
-      description:
-        "Got messy IT? We map what you have, simplify it, and make it work for your team – not the other way around.",
-      icon: <Cloud className="h-6 w-6" />,
-      href: "/services/cloud",
-    },
-    {
-      title: "Team Productivity",
-      description:
-        "Give your staff tools that actually help them focus on residents or guests – not fighting with tech.",
-      icon: <Users className="h-6 w-6" />,
-      href: "/services/digital-workplace",
-    },
-    {
-      title: "Network & WiFi",
-      description:
-        "Slow internet and dead zones kill productivity. We design networks that work reliably in your building.",
-      icon: <TrendingUp className="h-6 w-6" />,
-      href: "/services/network",
-    },
-    {
-      title: "Backup & Safety",
-      description:
-        "Your data is too important to lose. We set up simple, reliable backups that give you peace of mind.",
-      icon: <Lock className="h-6 w-6" />,
-      href: "/services/backup",
-    },
-  ];
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
-  const sectors = [
-    "Care Homes",
-    "Hospitality",
-    "Healthcare",
-    "Retail",
-    "Education",
-    "Remote & Desktop Support",
-    "Rollouts & Refresh",
-    "Hands & Eyes Services",
-  ];
+      alert("Thanks! We'll be in touch within 1 working day.");
+      setFormData({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+        ongoingSupport: false,
+      });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("Sorry, there was an error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
       <Header />
-
-      {/* Exit Intent Popup */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg shadow-2xl max-w-md w-full p-6 sm:p-8 relative">
-            <button
-              onClick={() => setShowPopup(false)}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-              Before you go...
-            </h3>
-            <p className="text-base sm:text-lg text-foreground mb-6">
-              Want to see how we'd untangle your admin mess?
-            </p>
-            <p className="text-sm text-muted-foreground mb-6">
-              We'll do a free, no-obligation site visit to understand your systems.
-            </p>
-            <Button
-              asChild
-              className="w-full bg-primary hover:bg-primary/90 text-white text-base sm:text-lg py-6"
-            >
-              <Link href="/contact">→ Yes, book a site visit</Link>
-            </Button>
-          </div>
-        </div>
-      )}
       <main>
-        {/* Hero Section */}
-        <section className="relative py-12 sm:py-20 lg:py-32 bg-gradient-to-br from-white via-blue-50 to-white">
-          {/* Subtle background overlay */}
-          <img
-            src="/assets/bg-1.jpg"
-            alt=""
-            className="w-full object-cover absolute top-0 left-0 right-0 opacity-40 h-full z-0 "
-          />
-          <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 z-10 relative">
-            <div className="text-center">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 text-balance leading-tight">
-                On-Site IT for UK Care Homes & Hospitality
-              </h1>
-              <ul className="space-y-4 max-w-md mx-auto mb-8 text-left">
-                <li className="flex items-center text-lg sm:text-xl">
-                  <CheckCircle className="text-[#2D60A3] mr-3 flex-shrink-0" size={24} />
-                  <span>We come to your site – no remote-only ticketing</span>
-                </li>
-                <li className="flex items-center text-lg sm:text-xl">
-                  <CheckCircle className="text-[#2D60A3] mr-3 flex-shrink-0" size={24} />
-                  <span>Untangle messy admin systems and paper trails</span>
-                </li>
-                <li className="flex items-center text-lg sm:text-xl">
-                  <CheckCircle className="text-[#2D60A3] mr-3 flex-shrink-0" size={24} />
-                  <span>Automate manual work so your team can focus on care</span>
-                </li>
-              </ul>
-              <div className="flex justify-center">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 text-base sm:text-lg px-8 py-6"
-                >
-                  <Link href="/contact">Send Enquiry</Link>
-                </Button>
-              </div>
-            </div>
-
-            {/* Hero Image Placeholder */}
-            <div className="mt-8 sm:mt-12 lg:mt-16 rounded-xl overflow-hidden shadow-2xl border border-white/20 bg-secondary h-48 sm:h-64 lg:h-80 flex items-center justify-center relative md:hidden">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
-              <img
-                src="./assets/enterprise.jpg"
-                alt="Modern IT Infrastructure"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Core Services Grid */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
-            <div className="text-center mb-10 sm:mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 sm:mb-6">
-                Where We Help
-              </h2>
-              <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
-                We focus on the problems that actually slow down care homes and hospitality businesses – messy admin, manual processes, and unreliable tech.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
-              {services.map((service) => (
-                <ServiceCard key={service.href} {...service} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Rolling Service Portfolio */}
-        <section className="relative py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-blue-50/50 to-white overflow-hidden">
-          {/* Decorative background elements */}
-          <div className="absolute inset-0 opacity-30 pointer-events-none">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-[100px]"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full filter blur-[100px]"></div>
-          </div>
-
-          <div className="relative mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <span className="text-primary font-semibold tracking-wider text-sm uppercase">
-                What We Do
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
-                We Sort Out the Tech That Gets in Your Way
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                From site visits to system automation – we handle the tech so your team can focus on what matters.
-              </p>
-            </div>
-
-            {/* Marquee Container */}
-            <div className="relative py-4 mask-fade-sides">
-              {/* First Row - Scroll Right */}
-              <div className="overflow-hidden mb-6">
-                <div className="flex animate-marquee-right">
-                  {[...Array(2)].map((_, setIndex) => (
-                    <div
-                      key={setIndex}
-                      className="flex shrink-0 gap-4 sm:gap-6 px-3"
-                    >
-                      {[
-                        { name: "On-Site IT Support", icon: "🖥️" },
-                        { name: "Admin Automation", icon: "📋" },
-                        { name: "System Untangling", icon: "☁️" },
-                        { name: "Team Productivity", icon: "💼" },
-                        { name: "Network & WiFi", icon: "🌐" },
-                      ].map((service, index) => (
-                        <div
-                          key={`${setIndex}-${index}`}
-                          className="flex items-center gap-3 px-5 py-3 rounded-full bg-white border border-slate-200 shadow-sm whitespace-nowrap"
-                        >
-                          <span className="text-xl">{service.icon}</span>
-                          <span className="text-foreground font-medium text-sm sm:text-base">
-                            {service.name}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Second Row - Scroll Left */}
-              <div className="overflow-hidden">
-                <div className="flex animate-marquee-left">
-                  {[...Array(2)].map((_, setIndex) => (
-                    <div
-                      key={setIndex}
-                      className="flex shrink-0 gap-4 sm:gap-6 px-3"
-                    >
-                      {[
-                        { name: "Backup & Safety", icon: "💾" },
-                        { name: "IT Strategy", icon: "💡" },
-                        { name: "Project Rollouts", icon: "⚙️" },
-                        { name: "Ongoing Support", icon: "🤝" },
-                        { name: "Site Visits", icon: "📞" },
-                      ].map((service, index) => (
-                        <div
-                          key={`${setIndex}-${index}`}
-                          className="flex items-center gap-3 px-5 py-3 rounded-full bg-white border border-slate-200 shadow-sm whitespace-nowrap"
-                        >
-                          <span className="text-xl">{service.icon}</span>
-                          <span className="text-foreground font-medium text-sm sm:text-base">
-                            {service.name}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="py-16 sm:py-24 bg-background">
-          <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Why UK Care & Hospitality Teams Work With Us
-              </h2>
-            </div>
-            <div className="grid gap-4 sm:gap-5">
-              {[
-                "We visit your site – we're a UK-based team that comes to you",
-                "We specialise in care and hospitality – we know your admin pain points",
-                "We untangle messy spreadsheets, legacy software, and manual processes",
-                "We automate the boring stuff so your staff can focus on residents or guests",
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-3 p-4 rounded-lg bg-white border border-border hover:border-primary/50 transition-colors"
-                >
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-base sm:text-lg text-foreground font-medium">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Industries Section */}
-        <section className="py-12 sm:py-16 lg:py-24 bg-background">
-          <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                We Work Across the UK
-              </h2>
-              <p className="text-muted-foreground">
-                From care homes to hotels – if you've got messy admin, we can help.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-              {sectors.map((sector, index) => (
-                <Link
-                  key={index}
-                  href={`/sectors/${sector.toLowerCase().replace(/ /g, "-")}`}
-                  className="group block"
-                >
-                  <div className="h-full p-4 sm:p-6 rounded-xl border border-border bg-white text-center hover:shadow-lg hover:border-primary/50 transition-all duration-300 flex items-center justify-center">
-                    <span className="text-sm sm:text-base lg:text-lg font-medium text-foreground group-hover:text-primary transition-colors">
-                      {sector}
-                    </span>
-                    <CheckCircle className="w-4 h-4 ml-2 text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="py-16 sm:py-24 bg-secondary/30">
-          <div className="mx-auto max-w-3xl px-3 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-foreground">
-              Let's talk about your admin headaches.
-            </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-8 px-2 max-w-2xl mx-auto">
-              We'll visit your site, see the mess firsthand, and show you what we can automate. No sales pitch – just an honest look at what's possible.
+        <section className="py-16 bg-gradient-to-br from-primary to-primary/80 text-white">
+          <div className="mx-auto max-w-7xl px-4 text-center">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+              Let's untangle your admin mess
+            </h1>
+            <p className="text-lg sm:text-xl opacity-90 max-w-3xl mx-auto">
+              If you're in care or hospitality, we know exactly what you're dealing with.
+              We'll visit your site and show you what we can automate.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary text-white hover:bg-primary/90 shadow-lg px-6 sm:px-10 h-16 sm:h-14 text-base sm:text-lg w-full sm:w-auto"
-            >
-              <Link href="/contact">Book a site visit</Link>
-            </Button>
+          </div>
+        </section>
+
+        <section className="py-12 bg-background">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              <div className="p-6 rounded-lg bg-white border text-center shadow-sm">
+                <Mail className="h-8 w-8 text-primary mx-auto mb-4" />
+                <h3 className="font-bold mb-2">Email</h3>
+                <a href="mailto:info@mprimotech.com" className="text-primary hover:underline">
+                  info@mprimotech.com
+                </a>
+              </div>
+              <div className="p-6 rounded-lg bg-white border text-center shadow-sm">
+                <Phone className="h-8 w-8 text-primary mx-auto mb-4" />
+                <h3 className="font-bold mb-2">Phone</h3>
+                <a href="tel:+443302237450" className="text-primary hover:underline">
+                  +44 (330) 223-7450
+                </a>
+              </div>
+              <div className="p-6 rounded-lg bg-white border text-center shadow-sm">
+                <Clock className="h-8 w-8 text-primary mx-auto mb-4" />
+                <h3 className="font-bold mb-2">Response Time</h3>
+                <p className="text-muted-foreground">We aim to reply within 1 working day</p>
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold mb-2">Send us a Message</h2>
+              <p className="text-muted-foreground mb-6">
+                Fill out the form and we'll be in touch to arrange a site visit.
+                We're a small UK team – you'll speak to a real person.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Company *</label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary"
+                      placeholder="Your Company"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Email *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary"
+                      placeholder="john@company.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Phone</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary"
+                      placeholder="+44 330 223 7450"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-1">What do you need help with?</label>
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary"
+                  >
+                    <option value="">Select an option...</option>
+                    <option value="site-visit">Site visit to see our systems</option>
+                    <option value="admin-automation">Automating manual admin work</option>
+                    <option value="spreadsheets">Untangling spreadsheets and legacy software</option>
+                    <option value="network">Slow WiFi / network issues</option>
+                    <option value="backup">Backup and data safety</option>
+                    <option value="support">Ongoing IT support for my team</option>
+                    <option value="other">Something else – tell us below</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-1">Message *</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary"
+                    placeholder="Tell us about the admin headaches, manual processes, or IT problems you're dealing with..."
+                  />
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    name="ongoingSupport"
+                    checked={formData.ongoingSupport}
+                    onChange={handleChange}
+                    className="w-4 h-4"
+                  />
+                  <label className="text-sm text-muted-foreground">
+                    I'd like ongoing IT support, not just a one-off fix
+                  </label>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary hover:bg-primary/90 text-white disabled:opacity-50"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            </div>
           </div>
         </section>
       </main>
