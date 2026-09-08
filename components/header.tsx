@@ -19,12 +19,12 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-  <img
-    src="/mprimo-logo.png"
-    alt="MPrimo Tech logo"
-    className="h-10 w-auto object-contain"
-  />
-</Link>
+          <img
+            src="/mprimo-logo.png"
+            alt="MPrimo Tech logo"
+            className="h-10 w-auto object-contain"
+          />
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 md:flex">
@@ -91,7 +91,7 @@ export default function Header() {
           </Link>
 
           <Button asChild>
-            <Link href="/book-consultation">
+            <Link href="/contact">
               Book a 20-minute process review
             </Link>
           </Button>
@@ -174,7 +174,7 @@ export default function Header() {
 
             <Button asChild className="mt-2">
               <Link
-                href="/book-consultation"
+                href="/contact"
                 onClick={() => setIsOpen(false)}
               >
                 Book a 20-minute process review
