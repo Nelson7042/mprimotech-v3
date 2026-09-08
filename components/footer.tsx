@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-[#1A2B6B] text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company */}
@@ -17,32 +17,32 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">What We Do</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/services/on-site-it-support" className="opacity-90 hover:opacity-100">
+                <Link href="/services" className="opacity-90 hover:opacity-100">
                   On-Site IT Support
                 </Link>
               </li>
               <li>
-                <Link href="/services/admin-automation" className="opacity-90 hover:opacity-100">
+                <Link href="/services" className="opacity-90 hover:opacity-100">
                   Admin Automation
                 </Link>
               </li>
               <li>
-                <Link href="/services/system-untangling" className="opacity-90 hover:opacity-100">
+                <Link href="/services" className="opacity-90 hover:opacity-100">
                   System Untangling
                 </Link>
               </li>
               <li>
-                <Link href="/services/network-wifi" className="opacity-90 hover:opacity-100">
+                <Link href="/services" className="opacity-90 hover:opacity-100">
                   Network & WiFi
                 </Link>
               </li>
               <li>
-                <Link href="/services/backup-safety" className="opacity-90 hover:opacity-100">
+                <Link href="/services" className="opacity-90 hover:opacity-100">
                   Backup & Safety
                 </Link>
               </li>
               <li>
-                <Link href="/services/ongoing-support" className="opacity-90 hover:opacity-100">
+                <Link href="/services" className="opacity-90 hover:opacity-100">
                   Ongoing Support
                 </Link>
               </li>
