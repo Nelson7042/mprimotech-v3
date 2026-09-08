@@ -19,8 +19,12 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <span className="text-xl font-bold">MPrimo Tech</span>
-        </Link>
+  <img
+    src="/mprimo-logo.png"
+    alt="MPrimo Tech logo"
+    className="h-10 w-auto object-contain"
+  />
+</Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 md:flex">
